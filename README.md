@@ -15,4 +15,5 @@ Prochaine session mercredi 2 mai - pensez à s'inscrire sur trello et à install
 * [Toni]()
 * [Julien]()
 * [Yann]()
+* [Anthony]()
 * [Sofiane]()
