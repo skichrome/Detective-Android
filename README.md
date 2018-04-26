@@ -1,19 +1,22 @@
-# JavaProject => Detective investigation
+# JavaProject => Detective investigation  [![Build Status](https://travis-ci.org/skichrome/JavaProject.svg?branch=master)](https://travis-ci.org/skichrome/JavaProject)
 
-[![Build Status](https://travis-ci.org/skichrome/JavaProject.svg?branch=master)](https://travis-ci.org/skichrome/JavaProject)
 This is a textual game
 
 ## Getting Started
 
-recap des rôles pour le diagramme : Personnages - Sofiane, Toni, Aurelia Déplacements - Yann, Maxime
+* recap des rôles pour le diagramme
+  * Personnages - Sofiane, Toni, Aurelia
+  * Déplacements - Yann, Maxime
 
-Prochaine session mercredi 2 mai - pensez à s'inscrire sur trello et à installer notre cher Travis sur le github J'ajouterais également sur le diagramme à faire une classe "indices matériels"
+* Prochaine session mercredi 2 mai
+  * pensez à s'inscrire sur trello
+  * J'ajouterais également sur le diagramme à faire une classe "indices matériels"
 
 ### Contributors
-* [Aurélia]()
-* [Maxime]()
-* [Toni]()
-* [Julien]()
-* [Yann]()
-* [Anthony]()
-* [Sofiane]()
+* [Aurélia](https://github.com/lilidemon)
+* [Maxime](https://github.com/TitMax)
+* [Toni](https://github.com/skichrome)
+* [Julien](https://github.com/Cidrolehein)
+* [Yann](https://github.com/k4iz0)
+* [Anthony](https://github.com/AnthonyMde)
+* [Sofiane](https://github.com/LeothosThoren)
