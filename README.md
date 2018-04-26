@@ -1,5 +1,7 @@
 # JavaProject
 
+[![Build Status](https://travis-ci.org/skichrome/JavaProject.svg?branch=master)](https://travis-ci.org/skichrome/JavaProject)
+
 Contributors
 * Aurélia
 * Maxime
