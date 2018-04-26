@@ -9,8 +9,7 @@ This is a textual game
   * Déplacements - Yann, Maxime
 
 * Prochaine session mercredi 2 mai
-  * pensez à s'inscrire sur trello
-  * J'ajouterais également sur le diagramme à faire une classe "indices matériels"
+
 
 ### Contributors
 * [Aurélia](https://github.com/lilidemon)
