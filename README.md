@@ -4,11 +4,7 @@ This is a textual game
 
 ## Getting Started
 
-* recap des rôles pour le diagramme
-  * Personnages - Sofiane, Toni, Aurelia
-  * Déplacements - Yann, Maxime, Julien
-
-* Prochaine session mercredi 2 mai
+* Prochaine session mercredi 23 mai
 
 
 ### Contributors
