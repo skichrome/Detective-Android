@@ -5,6 +5,7 @@ This is a textual game
 ## Getting Started
 
 * Prochaine session mercredi 23 mai
+* Très cool la tentative
 
 
 ### Contributors
