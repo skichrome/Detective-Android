@@ -1,36 +1,92 @@
-
+import java.util.Scanner;
 
 public class RoomDriver {
 
 	public static void main(String[] args) {
-		
-		
+
+
+
+
 		// NAME OF ROOM //
-		
-		Room room1 = new Room("le jardin");
-		Room room2 = new Room("la salle de bain");
-		Room room3 = new Room("la chambre");
-		Room room4 = new Room("le salon");
-		Room room5 = new Room("le bureau");
-		Room room6 = new Room("la cuisine");
-		Room room7 = new Room("le hall");
-		Room room8 = new Room("la biblioth?que");
-		
+
+
+		Room room1 = new Room("le hall");				// H
+		Room room2 = new Room("la salle de bain");	// W
+		Room room3 = new Room("la chambre");			// C
+		Room room4 = new Room("le salon");			// S
+		Room room5 = new Room("le bureau");			// B
+		Room room6 = new Room("la cuisine");			// K
+		Room room7 = new Room("le jardin");			// G
+		Room room8 = new Room("la biblioth?que");		// L
+
 
 		Room [] tabRoom = {room1, room2, room3, room4, room5, room6, room7, room8};
-		
-		
-		for(int i = 0; i < 8; i++) {
-			
-			System.out.println(tabRoom[i].toString());
-			
-		}
-		
-//		ArrayList<String> tabItem = new ArrayList<String>();
-//
-//		System.out.println(tabItem.size());
-//		tabItem.add(Room.getItem());
-		
+
+
+//		for(int i = 0; i < 8; i++) {
+//			System.out.println(tabRoom[i].toString());
+//		}
+
+
+		Scanner sc = new Scanner(System.in);
+		//char wish = ' ';
+		char choice = ' ';
+		do {
+
+			do{
+
+				if (choice == ' ' | choice == 'H') {
+					System.out.println(tabRoom[0].toString());
+					System.out.println("Vous allez inspecter : (Q pour quitter)");
+					System.out.println("");
+					System.out.println("la cuisine (K)");
+					System.out.println("le salon (S)");
+					System.out.println("la biblioth?que (L)");
+					choice = sc.nextLine().charAt(0);
+				}else if (choice == 'K') {
+					System.out.println(tabRoom[5].toString());
+					System.out.println("Vous allez inspecter : (Q pour quitter)");
+					System.out.println("");
+					System.out.println("le hall (H)");
+					System.out.println("le salon (S)");
+					choice = sc.nextLine().charAt(0);
+				}else if (choice == 'S') {
+					System.out.println(tabRoom[3].toString());
+					System.out.println("Vous allez inspecter : (Q pour quitter)");
+					System.out.println("");
+					System.out.println("la cuisine (K)");
+					System.out.println("le hall (H)");
+					choice = sc.nextLine().charAt(0);
+				}else if (choice == 'L') {
+					System.out.println(tabRoom[7].toString());
+					System.out.println("Vous allez inspecter : (Q pour quitter)");
+					System.out.println("");
+					System.out.println("le hall (H)");
+					choice = sc.nextLine().charAt(0);
+				}
+
+				// if users don't choose existing rooms
+				if (choice != 'K' && choice != 'S' && choice != 'L' && choice != 'H' && choice != 'Q')
+				{
+					System.out.println("Cette pi?ce n'existe pas.");
+					System.out.println("");
+				}
+
+			}while (choice != 'K' && choice != 'S' && choice != 'L' && choice != 'H' && choice != 'Q');
+
+//			do{
+//				//System.out.println("Souhaitez-vous continuer ? explorer ? (O/N)");
+//				wish = sc.nextLine().charAt(0);
+//				}while (wish != 'Q');
+
+		}while (choice != 'Q');
+
+
+
+
+
 	}
+
+
 
 }
