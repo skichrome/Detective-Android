@@ -1,28 +1,25 @@
 public enum NameRoom {
     //Objets directement construits
-    HALL ("Le hall"),
-    WC ("La salle de bain"),
-    ROOM ("La chambre"),
-    KITCHEN ("La cuisine");
+    HALL("Le hall"),
+    WC("La salle de bain"),
+    ROOM("La chambre"),
+    KITCHEN("La cuisine");
 
     private String name;
 
     //Constructeur
-    NameRoom(String name){
+    NameRoom(String name) {
         this.name = name;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public String toString(){
+    public String toString() {
         return name;
     }
 }
-
-
 
 
 //public enum Volume {

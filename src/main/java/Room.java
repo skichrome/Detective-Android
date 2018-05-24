@@ -1,5 +1,6 @@
 public class Room {
 
+
     // Attributes : Name of room, ArrayList items, ArrayList pnj //
 
     private static int idForIncrement = 1;

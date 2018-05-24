@@ -6,6 +6,7 @@ This is a textual game
 
 * Prochaine session mercredi 23 mai
 * Très cool la tentative
+* Vraiment très cool - Aurélia
 
 
 ### Contributors
