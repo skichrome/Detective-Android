@@ -1,25 +1,35 @@
 public class Room
 {
-	private static int idForIncrement = 1;
-	private int id;
-	private String name;
-	private static String item;
+    // Attributes : Name of room, ArrayList items, ArrayList pnj //
 
-	public Room(String name)
+    private static int idForIncrement = 1;
+    private int id;
+    private String name;
+    private static String item;
+
+    // NAME OF ROOM //
+
+    public Room(String name)
 	{
-		this.id = idForIncrement++;
-		this.name = name;
-	}
+        this.id = idForIncrement++;
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String toString() {
-		return "Localisation : Vous êtes dans " + name;
-	}
+    public String toString() {
+        return "Localisation : Vous êtes dans " + name;
+    }
 
-	public static String getItem() {
-		return item;
-	}
+    // CHOICE ROOM //
+
+    // ITEMS OF ROOM //
+
+    public  String getItem() {
+        return item;
+    }
+
+    // Methods : getRoom(), setRoom(), getAvailableItem(), getPnj(), getCorpse()
 }
