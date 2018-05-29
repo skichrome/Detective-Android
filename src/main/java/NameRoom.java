@@ -5,32 +5,30 @@ public enum NameRoom
 	 * Pour personnaliser la méthode printSelectionToConsole()
 	 */
 
-	HALL("Le hall"),					// H
-	WC("La salle de bain"),				// W
-	BED_ROOM("La chambre"),				// C
-	LIVING_ROOM("le salon"),			// S
-	OFFICE("le bureau"),				// B
-	KITCHEN("La cuisine"),				// K
-	GARDEN("le jardin"),				// G
-	LIBRARY("la bibliothèque");			// L
+	HALL("Le hall", "la cuisine (K)\nle salon (S)\nLa biblio (L)"),					// H
+	WC("La salle de bain", "le jardin (G)\nle salon (S)\nla chambre (C)"),				// W
+	BED_ROOM("La chambre", "la salle de bain (W)\nle bureau (B)"),				// C
+	LIVING_ROOM("le salon", "la cuisine (K)\nle hall (H)\nla salle de bain (W)\nle bureau (B)\nle jardin (G)"),			// S
+	OFFICE("le bureau", "la bibliothèque (L)\nle salon (S)\nla chambre (C)"),				// B
+	KITCHEN("La cuisine", "le salon (S)\nle hall (H)"),				// K
+	GARDEN("le jardin", "la salle de bain (W)\nle salon (S)"),				// G
+	LIBRARY("la bibliothèque", "le hall (H)\nle bureau (B)");			// L
 
 	private String name;
+	private String availableRooms;
 
 	//Constructeur
-	NameRoom(String name)
+	NameRoom(String mName, String mAvailableRooms)
 	{
-		this.name = name;
+		this.name = mName;
+		this.availableRooms = mAvailableRooms;
 	}
 
-	public String getName()
-	{
-		return name;
-	}
+	public String getName() { return name; }
 
-	public String toString()
-	{
-		return name;
-	}
+	public String getAvailableRooms() { return availableRooms; }
+
+	public String toString() { return name; }
 }
 
 
