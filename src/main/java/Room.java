@@ -7,7 +7,6 @@ public class Room
     private String name;
     private String availableRooms;
     //private static String item;
-        //private NameRoom nameRoom;
 
     // NAME OF ROOM //
 
