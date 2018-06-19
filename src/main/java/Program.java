@@ -3,28 +3,29 @@ import java.util.Scanner;
 public class Program {
     public static void main(String[] args) {
         char choice;
-        char[] availableChoice;
+
         int position = 0;
         Scanner sc = new Scanner(System.in);
 
         Game game = new Game();
         Room[] roomList = game.getListRoom();
 
-//        System.out.println(roomList[position]);
+        System.out.println(roomList[position]);
+        Boolean isValid = false;//false
 
-        availableChoice = roomList[position].getAvailableChoice();
-        System.out.println(roomList[position].getAvailableRoomsName().length);
-        for (String str : roomList[position].getAvailableRoomsName()) {
-            System.out.println(str);
-        }
-        for (char ch : availableChoice) {
-            System.out.println(ch);
-        }
-        choice = sc.next().charAt(0);
-//        while (choice)
+        choice = '\0';
 
+
+        while (isValid || choice != 'Q') {
+            choice = sc.nextLine().charAt(0);
+            game.verifChoice(choice, position, isValid);
+            if (choice == 'Q') {
+                System.out.println("Au revoir !");
+            } else {
+                System.out.println("Mauvais choix");
+            }
+        }
     }
-
 }
 
 
