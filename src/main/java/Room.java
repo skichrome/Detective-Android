@@ -51,14 +51,16 @@ public class Room {
         str.append("Localisation : Vous êtes dans ");
         str.append(name);
         str.append(System.lineSeparator());
-        str.append("Vous allez inspecter : (Q pour quitter) ");
+        str.append("Vous pouvez inspecter : (Q pour quitter) ");
         str.append(System.lineSeparator());
 
         for (String element : availableRoomsName) {
+            str.append("-");
             str.append(element);
             str.append(System.lineSeparator());
         }
 
+        str.append("\nIndiquez votre choix :");
         return str.toString();
 
     }

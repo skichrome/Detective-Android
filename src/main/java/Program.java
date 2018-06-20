@@ -2,29 +2,33 @@ import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        char choice;
 
-        int position = 0;
+        //VAR
         Scanner sc = new Scanner(System.in);
-
         Game game = new Game();
-        Room[] roomList = game.getListRoom();
+        String nullPointerMessage = "Veuillez taper sur entrée qu'une seule fois !";
+        Character choice = '\0';
 
-        System.out.println(roomList[position]);
-        Boolean isValid = false;//false
+        //************************
+        // PLAY
+        //************************
 
-        choice = '\0';
+        //Introduction :
+        game.introduction();
 
+        //Main loop
 
-        while (isValid || choice != 'Q') {
-            choice = sc.nextLine().charAt(0);
-            game.verifChoice(choice, position, isValid);
-            if (choice == 'Q') {
-                System.out.println("Au revoir !");
-            } else {
-                System.out.println("Mauvais choix");
+        do {
+            try {
+                choice = sc.nextLine().toUpperCase().charAt(0);
+            } catch (IndexOutOfBoundsException n) {
+                System.out.println(nullPointerMessage);
             }
-        }
+            //New version
+            game.checkPlayerChoice(choice);
+
+        } while (choice != 'Q');
+        System.out.println("Au revoir !");
     }
 }
 
