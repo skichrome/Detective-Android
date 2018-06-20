@@ -83,7 +83,7 @@ public class Game {
     }
 
     /*
-     * This gonna change in the future... (play/quit) if play => (move, observe) if move => we know it works, else if observe (TODO)
+     * This gonna change in the future... (play/quit) if play => (move, observe) if move => we know it works, else if observe => (TODO)
      * */
     public void checkPlayerChoice(char choice) {
         char[] availableChoice = this.getListRoom()[position].getAvailableChoice();

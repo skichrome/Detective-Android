@@ -17,7 +17,6 @@ public class Program {
         game.introduction();
 
         //Main loop
-
         do {
             try {
                 choice = sc.nextLine().toUpperCase().charAt(0);

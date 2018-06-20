@@ -6,7 +6,7 @@ public enum NameRoom {
     LIVING_ROOM("le salon", "le bureau (O),la cuisine (C),le hall (H),le jardin (J),la salle de bain (W)"),
     OFFICE("le bureau", "la bibliothèque (B),le dortoir (D),le salon (S)"),
     KITCHEN("la cuisine", "le hall (H),le salon (S)"),
-    GARDEN("le jardin", "la salle de bain (W),le salon (S)"),
+    GARDEN("le jardin", "le salon (S)"),
     LIBRARY("la bibliothèque", "le bureau (O),le hall (H)");
 
     private String name;
