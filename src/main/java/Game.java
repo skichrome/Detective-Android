@@ -93,12 +93,13 @@ public class Game {
         for (char ch : availableChoice) {
             if (ch == choice) {
                 tmp = ch;
+                break;
             }
         }
         //Comparison between user input and array
         if (choice == tmp) {
-//            position = this.setIndex(choice);
-            position = this.characterHashMap.get(choice);
+//            position = this.setIndex(choice); Yann version ;)
+            position = this.characterHashMap.get(choice); // hashMap version
             System.out.println(this.listRoom[position]);
             //Prompt the player he is wrong !
         } else if (choice != tmp && choice != 'Q') {
