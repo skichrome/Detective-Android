@@ -1,7 +1,7 @@
 public enum NameRoom {
 
     HALL("le hall", "la bibliothèque (B),la cuisine (C),le salon (S)"),
-    WC("la salle de bain", "le dortoir (D),le jardin (J),le salon (S)"),
+    WC("la salle de bain", "le dortoir (D),le salon (S)"),
     BED_ROOM("le dortoir", "le bureau (O),la salle de bain (W)"),
     LIVING_ROOM("le salon", "le bureau (O),la cuisine (C),le hall (H),le jardin (J),la salle de bain (W)"),
     OFFICE("le bureau", "la bibliothèque (B),le dortoir (D),le salon (S)"),
