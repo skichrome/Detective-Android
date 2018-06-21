@@ -6,7 +6,7 @@ public class Program {
         //VAR
         Scanner sc = new Scanner(System.in);
         Game game = new Game();
-        String nullPointerMessage = "Veuillez taper sur entrée qu'une seule fois !";
+        String exceptionMessage = "Veuillez taper sur entrée qu'une fois la saisie effectué!";
         Character choice = '\0';
 
         //************************
@@ -21,7 +21,9 @@ public class Program {
             try {
                 choice = sc.nextLine().toUpperCase().charAt(0);
             } catch (IndexOutOfBoundsException n) {
-                System.out.println(nullPointerMessage);
+                System.out.println(exceptionMessage);
+            } catch (NullPointerException e ) {
+                System.out.println(exceptionMessage+ e.getMessage());
             }
             //New version
             game.checkPlayerChoice(choice);
