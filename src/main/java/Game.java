@@ -102,7 +102,7 @@ public class Game {
             position = this.characterHashMap.get(choice); // hashMap version
             System.out.println(this.listRoom[position]);
             //Prompt the player he is wrong !
-        } else if (choice != tmp && choice != 'Q') {
+        } else if (choice != 'Q') {
             System.out.println("Mauvaise(s) touche(s) ! Merci de réitérer votre choix : ");
         }
 
