@@ -22,8 +22,8 @@ public class Program {
                 choice = sc.nextLine().toUpperCase().charAt(0);
             } catch (IndexOutOfBoundsException n) {
                 System.out.println(exceptionMessage);
-            } catch (NullPointerException e ) {
-                System.out.println(exceptionMessage+ e.getMessage());
+            } catch (NullPointerException e) {
+                System.out.println(exceptionMessage + e.getMessage());
             }
             //New version
             game.checkPlayerChoice(choice);

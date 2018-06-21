@@ -5,7 +5,7 @@ public class Room {
 
     private String name;
     private String[] availableRoomsName;
-    private  char[] availableChoice;
+    private char[] availableChoice;
 
     //private static String item;
     //private NameRoom nameRoom;
@@ -35,7 +35,7 @@ public class Room {
         //position 2 en partant de la fin
         // ex : la cuisine (K)
         int position = 2;
-       this.availableChoice = new char[this.availableRoomsName.length];
+        this.availableChoice = new char[this.availableRoomsName.length];
         for (int i = 0; i < this.availableRoomsName.length; i++) {
             this.availableChoice[i] = availableRoomsName[i].charAt(availableRoomsName[i].length() - position);
         }
