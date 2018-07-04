@@ -6,30 +6,35 @@ public class Program {
         //VAR
         Scanner sc = new Scanner(System.in);
         Game game = new Game();
-        String exceptionMessage = "Veuillez taper sur entrée qu'une fois la saisie effectué!";
-        Character choice = '\0';
 
         //************************
         // PLAY
         //************************
 
-        //Introduction :
-        game.introduction();
+        game.menuIteration(sc);
 
-        //Main loop
-        do {
-            try {
-                choice = sc.nextLine().toUpperCase().charAt(0);
-            } catch (IndexOutOfBoundsException n) {
-                System.out.println(exceptionMessage);
-            } catch (NullPointerException e) {
-                System.out.println(exceptionMessage + e.getMessage());
-            }
-            //New version
-            game.checkPlayerChoice(choice);
 
-        } while (choice != 'Q');
-        System.out.println("Au revoir !");
+//        //Main loop
+//        do {
+//            try {
+//                choice = sc.nextLine().toUpperCase().charAt(0);
+//            } catch (IndexOutOfBoundsException n) {
+//                System.out.println(exceptionMessage);
+//            } catch (NullPointerException e) {
+//                System.out.println(exceptionMessage + e.getMessage());
+//            }
+//            //New version
+//            game.checkPlayerChoice(choice);
+//
+//            if (choice != 'R') {
+//                save.saveRoom(choice);
+//            }
+//
+//        } while (choice != 'R');
+//        System.out.println("Au revoir !");
+
+
+
     }
 }
 

@@ -48,19 +48,22 @@ public class Room {
 
     public String toString() {
         StringBuilder str = new StringBuilder();
-        str.append("Localisation : Vous êtes dans ");
-        str.append(name);
-        str.append(System.lineSeparator());
-        str.append("Vous pouvez inspecter : (Q pour quitter) ");
-        str.append(System.lineSeparator());
+        str.append("Localisation : Vous êtes dans ")
+                .append(name)
+                .append(System.lineSeparator())
+                .append("Vous pouvez inspecter : ")
+                .append(System.lineSeparator());
 
         for (String element : availableRoomsName) {
             str.append("-");
             str.append(element);
             str.append(System.lineSeparator());
         }
+        str.append(System.lineSeparator())
+                .append("Retourner au menu principal (R)")
+                .append(System.lineSeparator())
+                .append("Indiquez votre choix :");
 
-        str.append("\nIndiquez votre choix :");
         return str.toString();
 
     }
