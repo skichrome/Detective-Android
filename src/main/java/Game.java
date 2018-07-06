@@ -6,8 +6,9 @@ public class Game {
     private Room[] listRoom;
     private HashMap<Character, Integer> characterHashMap;
     private int position;
-    private Save slot = new Save();
+    private Data slot = new Data();
     private String exceptionMessage = "Veuillez taper sur entrée qu'une fois la saisie effectué!";
+    private Scanner sc = new Scanner(System.in);
 
     public Game() {
         //Room configuration
@@ -16,7 +17,12 @@ public class Game {
         //Item configuration
     }
 
-    public Room[] getListRoom() {
+
+    //******************************************************************************************************************
+    //                                           ROOM CONFIGURATION
+    //******************************************************************************************************************
+
+    private Room[] getListRoom() {
         return listRoom;
     }
 
@@ -31,14 +37,11 @@ public class Game {
         Room garden = new Room(NameRoom.GARDEN);
 
         this.listRoom = new Room[]{hall/*0*/, kitchen/*1*/, wc/*2*/, dormitory/*3*/, library/*4*/, livingRoom/*5*/, office/*6*/, garden/*7*/};
-        this.findRoomPositionWithPlayerInput();
+        this.roomIndexPosition();
 
     }
 
-    /*
-     * Another approach, what do you think !?
-     * */
-    public void findRoomPositionWithPlayerInput() {
+    private void roomIndexPosition() {
         // Bonus use of hashMap
         this.characterHashMap = new HashMap<>();
         characterHashMap.put('H', 0);//hall
@@ -51,63 +54,13 @@ public class Game {
         characterHashMap.put('J', 7);//garden
     }
 
-    /*
-     * This gonna change in the future... (play/quit) if play => (move, observe) if move => we know it works, else if observe => (TODO)
-     * */
-    public void checkPlayerChoice(char gameChoice) {
-        char[] availableChoice = this.getListRoom()[position].getAvailableChoice();
-        char tmp = '\n';
 
-        //loop into the char array
-        for (char ch : availableChoice) {
-            if (ch == gameChoice) {
-                tmp = ch;
-                break;
-            }
-        }
-        //Comparison between user input and array
-        if (gameChoice == tmp) {
-//            position = this.setIndex(choice); Yann version ;)
-            position = this.characterHashMap.get(gameChoice); // hashMap version
-            System.out.println(this.listRoom[position]);
-            //Prompt the player he is wrong !
-        } else if (gameChoice != 'R') {
-            System.out.println("Mauvaise(s) touche(s) ! Merci de réitérer votre choix : ");
-        }
+    //******************************************************************************************************************
+    //                                                PRINTING
+    //******************************************************************************************************************
 
-    }
-
-    /*
-     * At the beginning of the game
-     * */
-    public void introduction(Scanner sc) {
-        String intro = "Bienvenue dans le jeu Detective Java.\n" +
-                "Votre objectif est de mener l'enquête sur une histoire de meurtre...\n";
-        System.out.println(intro + "\n" + getListRoom()[position].toString());
-
-        //When introduction is called we launch the game
-        gameIteration(sc);
-
-    }
-
-
-    private char getPlayerInput(Scanner sc) {
-
-        //Todo trouver pourqoui la variable fait déconner
-        char choice = '\0';
-        try {
-            choice = sc.nextLine().toUpperCase().charAt(0);
-        } catch (IndexOutOfBoundsException n) {
-            System.out.println(exceptionMessage);
-        } catch (NullPointerException e) {
-            System.out.println(exceptionMessage + e.getMessage());
-        }
-        return choice;
-
-    }
-
-    private void printMenu() {
-        System.out.println("********************\n" +
+    private void printMainMenu() {
+        System.out.println("\n********************\n" +
                 "** MENU PRINCIPAL **\n" +
                 "********************\n");
 
@@ -116,64 +69,197 @@ public class Game {
                 + "Quitter (Q)");
     }
 
-    public void menuIteration(Scanner sc) {
-        char choice = '\0';
-        printMenu();
+    private void printActionMenu() {
+        System.out.println("Listes des actions possibles :\n\t"
+                + "-Se déplacer (D)\n\t"
+                + "-Observer la zone (O)\n\t"
+                + "-Retour menu principal (R)\n");
+    }
+
+    private void printGameMenu() {
+        System.out.println("\n******************\n" +
+                "** ECRAN DE JEU **\n" +
+                "******************\n");
+    }
+
+    //******************************************************************************************************************
+    //                                                   MENU
+    //******************************************************************************************************************
+
+    public void mainMenu() {
+        char menuChoice = '\0';
+        this.printMainMenu();
+
         do {
             try {
-                choice = sc.nextLine().toUpperCase().charAt(0);
+                menuChoice = sc.nextLine().toUpperCase().charAt(0);
+            } catch (IndexOutOfBoundsException n) {
+                System.err.println(exceptionMessage);
+            } catch (NullPointerException e) {
+                System.err.println(exceptionMessage + e.getMessage());
+            }
+
+            if (menuChoice != 'Q' && menuChoice != 'N' && menuChoice != 'C')
+                System.err.println("Merci de sélectionner une des options proposées");
+
+        } while (menuChoice != 'Q' && menuChoice != 'N' && menuChoice != 'C');
+
+        //NEW GAME
+        if (menuChoice == 'N') {
+            this.newGame();
+            //CONTINUE GAME
+        } else if (menuChoice == 'C') {
+            this.continueGame();
+            //QUIT GAME
+        } else {
+            System.out.println("Au revoir !");
+        }
+
+    }
+
+    private void actionMenu() {
+        char actionChoice = '\0';
+        this.printActionMenu();
+
+        do {
+            try {
+                actionChoice = sc.nextLine().toUpperCase().charAt(0);
             } catch (IndexOutOfBoundsException n) {
                 System.out.println(exceptionMessage);
             } catch (NullPointerException e) {
                 System.out.println(exceptionMessage + e.getMessage());
             }
 
-            if (choice == 'N')
-                newGame(sc);
-            if (choice == 'C')
-                continueGame();
+            if (actionChoice != 'R' && actionChoice != 'D' && actionChoice != 'O')
+                System.err.println("Merci de sélectionner une des options proposées !");
 
-            if (choice != 'Q')
-                System.out.println("Merci de sélectionner une des options proposées");
-
-        } while (choice != 'Q');
-        System.out.println("Au revoir !");
+        } while (actionChoice != 'R' && actionChoice != 'D' && actionChoice != 'O');
+        //MOVE
+        if (actionChoice == 'D') {
+            this.moveIntoRoom();
+            //OBSERVE
+        } else if (actionChoice == 'O') {
+            this.observeRoom();
+            //BACK MENU
+        } else {
+            //Go back to the menu when finish the game
+            System.out.println("=> Vous retournez au menu principal");
+            this.mainMenu();
+        }
 
     }
 
-
-    private void gameIteration(Scanner sc) {
-        char choice = '\0';
-        do {
-            try {
-                choice = sc.nextLine().toUpperCase().charAt(0);
-            } catch (IndexOutOfBoundsException n) {
-                System.out.println(exceptionMessage);
-            } catch (NullPointerException e) {
-                System.out.println(exceptionMessage + e.getMessage());
-            }
-            //New version
-            checkPlayerChoice(choice);
-            //Possible to add plenty method here
-
-            if (choice != 'R') {
-                slot.saveRoom(choice);
-            }
-
-        } while (choice != 'R');
-        //Go back to the menu when finish the game
-        menuIteration(sc);
-    }
-
-    private void newGame(Scanner sc) {
+    private void newGame() {
+        this.printGameMenu();
         //if user select the good input so we launch introduction...
-        introduction(sc);
+        String intro = "Bienvenue dans le manoir Shikabuki, détective Kovac.\n" +
+                "Votre objectif est de mener à bien l'enquête sur le meurtre d'un très grand diginitaire Maths." +
+                "\nCe dernier a eu sa stack détruite..." +
+                "\nVous devez chercher et trouver le coupable !\n";
+        System.out.println(intro);
+        //First thing to do check if there is a saving
+        if (ifSaving()) {
+            //if true we empty the file
+            slot.saveRoom('\0');
+            //initialise position to 0
+            position = 0;
+        }
+        this.actionMenu();
 
     }
 
     private void continueGame() {
-        //if user select the good input so we launch the load info (i there is a load info other wise it's introduction
-        slot.loadRoom();
+        //We need to check if the game have a saving first before
+        if (!ifSaving()) {
+            System.out.println("AUCUNE SAUVEGARDE TROUVEE !!! ");
+            System.out.println("=> Vous allez débuter une nouvelle partie\n");
+            this.newGame();
+        } else {
+            System.out.println("=> Vous reprenez votre partie !");
+            this.actionMenu();
+        }
     }
 
+    //******************************************************************************************************************
+    //                                                   ACTION
+    //******************************************************************************************************************
+
+    private int checkRoomPlayerChoice(char choice) {
+        char[] availableChoice = this.getListRoom()[position].getAvailableChoice();
+        char tmp = '\0';
+
+        //loop into the char array
+        for (char ch : availableChoice) {
+            if (ch == choice) {
+                tmp = ch;
+                break;
+            }
+        }
+        //Comparison between user input and array
+        if (choice == tmp) {
+            position = this.characterHashMap.get(tmp);
+            slot.saveRoom(choice);
+            //Prompt the player he is wrong !
+        } else if (choice != 'A') {
+            System.err.println("Mauvaise(s) touche(s) ! Merci de réitérer votre choix : ");
+        }
+
+        return position;
+    }
+
+    private void moveIntoRoom() {
+        char choice = '\0';
+
+        if (ifSaving()) {
+            int pos = this.characterHashMap.get(slot.loadRoom());
+            System.out.println(getListRoom()[pos].toString());
+        } else {
+            System.out.println(getListRoom()[position].toString());
+        }
+
+
+        do {
+            try {
+                choice = sc.nextLine().toUpperCase().charAt(0);
+            } catch (IndexOutOfBoundsException n) {
+                System.out.println(exceptionMessage);
+            } catch (NullPointerException e) {
+                System.out.println(exceptionMessage + e.getMessage());
+            }
+
+            if (choice != 'A')
+                System.out.println(this.listRoom[checkRoomPlayerChoice(choice)]);
+
+        } while (choice != 'A');
+        System.out.println("=> Retour à la liste des actions\n");
+        this.actionMenu();
+    }
+
+    private void observeRoom() {
+        System.out.println("Rien à observer pour l'instant");
+    }
+
+    //******************************************************************************************************************
+    //                                                   UTILS
+    //******************************************************************************************************************
+
+    public Boolean ifSaving() {
+        return slot.loadRoom() != '\0';
+    }
+
+    //Seems to be unusual
+    private void getPlayerInput(char choice) {
+        //Todo trouver pourqoui la variable fait déconner
+//        char choice = '\0';
+        try {
+            choice = (char) (sc.next().toUpperCase().charAt(0));
+        } catch (IndexOutOfBoundsException n) {
+            System.out.println(exceptionMessage);
+        } catch (NullPointerException e) {
+            System.out.println(exceptionMessage + e.getMessage());
+        }
+
+
+    }
 }
+

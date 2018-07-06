@@ -60,7 +60,7 @@ public class Room {
             str.append(System.lineSeparator());
         }
         str.append(System.lineSeparator())
-                .append("Retourner au menu principal (R)")
+                .append("-Retourner au menu des actions (A)")
                 .append(System.lineSeparator())
                 .append("Indiquez votre choix :");
 

@@ -7,27 +7,23 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Save {
+public class Data {
 
     private String fileName = "saveRoom.txt";
     private File file = new File(fileName);
 
-    public Save() {
+    public Data() {
     }
 
     public void saveRoom(char choice) {
         //on demande à l'utilisateur s'il veut sauvegarder sa salle
         // si oui, on écrit dans le fichier
-
-
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
-
             bufferedWriter.write(choice);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -39,20 +35,16 @@ public class Save {
 
         try {
             FileReader fileReader = new FileReader(file);
-
-            bufferedReader = new BufferedReader(fileReader);
             // met en tampon le contenu
-            // lit le fichier
+            bufferedReader = new BufferedReader(fileReader);
 
             String line = "";
-
             // lit la ligne
-
             while ((line = bufferedReader.readLine()) != null) {
-
                 letter = line.charAt(0);
-                System.out.println(letter);
                 // affiche la ligne
+//                System.out.println(letter);
+
             }
 
 
@@ -60,9 +52,8 @@ public class Save {
             System.err.printf("Le fichier %s n'a pas été trouvé.", file.toString());
         } catch (IOException e) {
             System.err.println("Impossible de lire le contenu du fichier " + file.toString());
-        } finally {
             // execute finally quoiqu'il arrive
-
+        } finally {
             try {
 
                 if (bufferedReader != null) {
@@ -77,7 +68,6 @@ public class Save {
         }
 
         return letter;
-
     }
 
 
