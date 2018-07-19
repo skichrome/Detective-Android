@@ -235,7 +235,13 @@ public class Game {
         this.actionMenu();
     }
 
-    private void observeRoom() {
+    private void observeRoom(char choice) {
+        //L'indication de la pièce dans laquelle on est
+
+        //Repartition des indices et des personnages au travers d'arrays (enumeration - 15 objets) Aurelia
+        //2 shuffle entre le nombre d'objets et l'objet parmi une liste à afficher dans une pièce //Yann
+
+        //retourne la liste des éléments présent dans la pièce actuelle avec condition
         System.out.println("Rien à observer pour l'instant");
     }
 
@@ -262,4 +268,3 @@ public class Game {
 
     }
 }
-
