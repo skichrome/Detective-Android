@@ -1,3 +1,4 @@
+package main.cybercrime;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,15 +10,15 @@ import java.io.IOException;
 
 public class Data {
 
-    private String fileName = "saveRoom.txt";
+	private String fileName = "saveRoom.txt";
     private File file = new File(fileName);
 
     public Data() {
     }
 
     public void saveRoom(char choice) {
-        //on demande Ã  l'utilisateur s'il veut sauvegarder sa salle
-        // si oui, on Ã©crit dans le fichier
+        //on demande à l'utilisateur s'il veut sauvegarder sa salle
+        // si oui, on écrit dans le fichier
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
             bufferedWriter.write(choice);
 
@@ -40,16 +41,15 @@ public class Data {
 
             String line = "";
             // lit la ligne
-            while ((line = bufferedReader.readLine()) != null) {
+            if ((line = bufferedReader.readLine()) == null) {
+            	letter = 'H';
+            }else {
                 letter = line.charAt(0);
-                // affiche la ligne
-//                System.out.println(letter);
-
             }
 
 
         } catch (FileNotFoundException e) {
-            System.err.printf("Le fichier %s n'a pas Ã©tÃ© trouvÃ©.", file.toString());
+            System.err.printf("Le fichier %s n'a pas été trouvé.", file.toString());
         } catch (IOException e) {
             System.err.println("Impossible de lire le contenu du fichier " + file.toString());
             // execute finally quoiqu'il arrive
@@ -68,8 +68,5 @@ public class Data {
         }
 
         return letter;
-    }
-
-
 }
-
+}
