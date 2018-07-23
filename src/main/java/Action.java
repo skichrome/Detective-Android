@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Action {
 
   //Todo
@@ -13,7 +15,7 @@ public class Action {
   //Repartition des indices et des personnages
   //
 
-  private List<Clue> clues;
-  private Room rooms; //drop rooms
-  private List<PNJ> listCharacters;
+//  private List<Clue> clues;
+//  private Room rooms; //drop rooms
+//  private List<PNJ> listCharacters;
 }
