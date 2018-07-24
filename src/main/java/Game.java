@@ -51,7 +51,7 @@ public class Game {
     private void  configureItem() {
         itemList.shuffleItemsIntoRooms(listRoom);
         for (Room room : listRoom) {
-        System.out.println("liste des items disponibles dans la "+room.getName()+" : " +room.getAvailableItem());
+        //System.out.println("liste des items disponibles dans "+room.getName()+" : " +room.getAvailableItem());
 
         }
     }
@@ -252,13 +252,23 @@ public class Game {
     }
 
     private void observeRoom() {
+    	
+    	ArrayList<Items> availableItem = getListRoom()[position].getAvailableItem();
+        if (availableItem.size() > 0){
+        System.out.println(availableItem);
+        }
+        else{
+        System.out.println("Rien à observer pour l'instant");
+        }
         //L'indication de la pièce dans laquelle on est
 
         //Repartition des indices et des personnages au travers d'arrays (enumeration - 15 objets) Aurelia
         //2 shuffle entre le nombre d'objets et l'objet parmi une liste à afficher dans une pièce //Yann
 
         //retourne la liste des éléments présent dans la pièce actuelle avec condition
-        System.out.println("Rien à observer pour l'instant");
+    	
+    	
+        //System.out.println("Rien à observer pour l'instant" + getListRoom()[position].getAvailableItem());
         this.actionMenu();
 
     }
