@@ -1,5 +1,6 @@
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -11,10 +12,13 @@ public class Game {
     private Data slot = new Data();
     private String exceptionMessage = "Veuillez taper sur entrée qu'une fois la saisie effectué!";
     private Scanner sc = new Scanner(System.in);
+    private ItemList itemList = new ItemList();
 
     public Game() {
         //Room configuration
         configureRoom();
+        configureItem();
+
         //PNJ configuration
         //Item configuration
     }
@@ -41,6 +45,15 @@ public class Game {
         this.listRoom = new Room[]{hall/*0*/, kitchen/*1*/, wc/*2*/, dormitory/*3*/, library/*4*/, livingRoom/*5*/, office/*6*/, garden/*7*/};
         this.roomIndexPosition();
 
+
+    }
+
+    private void  configureItem() {
+        itemList.shuffleItemsIntoRooms(listRoom);
+        for (Room room : listRoom) {
+        System.out.println("liste des items disponibles dans la "+room.getName()+" : " +room.getAvailableItem());
+
+        }
     }
 
     private void roomIndexPosition() {
@@ -179,6 +192,7 @@ public class Game {
         } else {
             System.out.println("=> Vous reprenez votre partie !");
             this.actionMenu();
+
         }
     }
 
@@ -245,7 +259,11 @@ public class Game {
 
         //retourne la liste des éléments présent dans la pièce actuelle avec condition
         System.out.println("Rien à observer pour l'instant");
+        this.actionMenu();
+
     }
+
+
 
     //******************************************************************************************************************
     //                                                   UTILS
