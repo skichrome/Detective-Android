@@ -1,10 +1,10 @@
-import java.util.HashMap;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class SplashScreen {
 
-    private static HashMap<Character, String[]> characterHashMap = new HashMap<>();
     private static final int H = 5; // number of line  == ascii letter size
+    private static Hashtable<Character, String[]> characterHashMap = new Hashtable<>();
 
     public SplashScreen() {
 
@@ -36,9 +36,8 @@ public class SplashScreen {
         characterHashMap.put('Z', new String[]{"000", "  0", " 0 ", "0  ", "000"});
     }
 
-//    /00
-//    For testing each letter
-//    00/
+
+    //    For testing each letter
     public String showLetter(char c) {
         StringBuilder builder = new StringBuilder();
         for (String res : characterHashMap.get(c)) {
@@ -47,9 +46,7 @@ public class SplashScreen {
         return builder.toString();
     }
 
-//    /00
-//     0 Help to permute simple char into ascii art letter
-//     000/
+    //     0 Help to permute simple char into ascii art letter
     public void displayAsciiWord(String s) {
 
         String[][] matrix = new String[H][s.length()];
