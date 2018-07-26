@@ -5,3 +5,7 @@
 .idea/libraries
 out/
 *.iml
+.classpath
+.project
+.settings/
+/bin/

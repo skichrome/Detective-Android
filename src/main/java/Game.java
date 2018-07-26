@@ -1,3 +1,6 @@
+
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -7,12 +10,15 @@ public class Game {
     private HashMap<Character, Integer> characterHashMap;
     private int position;
     private Data slot = new Data();
-    private String exceptionMessage = "Veuillez taper sur entrÃ©e qu'une fois la saisie effectuÃ©!";
+    private String exceptionMessage = "Veuillez taper sur entrée qu'une fois la saisie effectué!";
     private Scanner sc = new Scanner(System.in);
+    private ItemList itemList = new ItemList();
 
     public Game() {
         //Room configuration
         configureRoom();
+        configureItem();
+
         //PNJ configuration
         //Item configuration
     }
@@ -39,6 +45,15 @@ public class Game {
         this.listRoom = new Room[]{hall/*0*/, kitchen/*1*/, wc/*2*/, dormitory/*3*/, library/*4*/, livingRoom/*5*/, office/*6*/, garden/*7*/};
         this.roomIndexPosition();
 
+
+    }
+
+    private void  configureItem() {
+        itemList.shuffleItemsIntoRooms(listRoom);
+        for (Room room : listRoom) {
+        //System.out.println("liste des items disponibles dans "+room.getName()+" : " +room.getAvailableItem());
+
+        }
     }
 
     private void roomIndexPosition() {
@@ -71,7 +86,7 @@ public class Game {
 
     private void printActionMenu() {
         System.out.println("Listes des actions possibles :\n\t"
-                + "-Se dÃ©placer (D)\n\t"
+                + "-Se déplacer (D)\n\t"
                 + "-Observer la zone (O)\n\t"
                 + "-Retour menu principal (R)\n");
     }
@@ -100,7 +115,7 @@ public class Game {
             }
 
             if (menuChoice != 'Q' && menuChoice != 'N' && menuChoice != 'C')
-                System.err.println("Merci de sÃ©lectionner une des options proposÃ©es");
+                System.err.println("Merci de sélectionner une des options proposées");
 
         } while (menuChoice != 'Q' && menuChoice != 'N' && menuChoice != 'C');
 
@@ -131,7 +146,7 @@ public class Game {
             }
 
             if (actionChoice != 'R' && actionChoice != 'D' && actionChoice != 'O')
-                System.err.println("Merci de sÃ©lectionner une des options proposÃ©es !");
+                System.err.println("Merci de sélectionner une des options proposées !");
 
         } while (actionChoice != 'R' && actionChoice != 'D' && actionChoice != 'O');
         //MOVE
@@ -152,9 +167,9 @@ public class Game {
     private void newGame() {
         this.printGameMenu();
         //if user select the good input so we launch introduction...
-        String intro = "Bienvenue dans le manoir Shikabuki, dÃ©tective Kovac.\n" +
-                "Votre objectif est de mener Ã  bien l'enquÃªte sur le meurtre d'un trÃ¨s grand diginitaire Maths." +
-                "\nCe dernier a eu sa stack dÃ©truite..." +
+        String intro = "Bienvenue dans le manoir Shikabuki, détective Kovac.\n" +
+                "Votre objectif est de mener à bien l'enquête sur le meurtre d'un très grand diginitaire Maths." +
+                "\nCe dernier a eu sa stack détruite..." +
                 "\nVous devez chercher et trouver le coupable !\n";
         System.out.println(intro);
         //First thing to do check if there is a saving
@@ -172,11 +187,12 @@ public class Game {
         //We need to check if the game have a saving first before
         if (!ifSaving()) {
             System.out.println("AUCUNE SAUVEGARDE TROUVEE !!! ");
-            System.out.println("=> Vous allez dÃ©buter une nouvelle partie\n");
+            System.out.println("=> Vous allez débuter une nouvelle partie\n");
             this.newGame();
         } else {
             System.out.println("=> Vous reprenez votre partie !");
             this.actionMenu();
+
         }
     }
 
@@ -201,7 +217,7 @@ public class Game {
             slot.saveRoom(choice);
             //Prompt the player he is wrong !
         } else if (choice != 'A') {
-            System.err.println("Mauvaise(s) touche(s) ! Merci de rÃ©itÃ©rer votre choix : ");
+            System.err.println("Mauvaise(s) touche(s) ! Merci de réitérer votre choix : ");
         }
 
         return position;
@@ -231,13 +247,33 @@ public class Game {
                 System.out.println(this.listRoom[checkRoomPlayerChoice(choice)]);
 
         } while (choice != 'A');
-        System.out.println("=> Retour Ã  la liste des actions\n");
+        System.out.println("=> Retour à la liste des actions\n");
         this.actionMenu();
     }
 
     private void observeRoom() {
-        System.out.println("Rien Ã  observer pour l'instant");
+    	
+    	ArrayList<Items> availableItem = getListRoom()[position].getAvailableItem();
+        if (availableItem.size() > 0){
+        System.out.println(availableItem);
+        }
+        else{
+        System.out.println("Rien à observer pour l'instant");
+        }
+        //L'indication de la pièce dans laquelle on est
+
+        //Repartition des indices et des personnages au travers d'arrays (enumeration - 15 objets) Aurelia
+        //2 shuffle entre le nombre d'objets et l'objet parmi une liste à afficher dans une pièce //Yann
+
+        //retourne la liste des éléments présent dans la pièce actuelle avec condition
+    	
+    	
+        //System.out.println("Rien à observer pour l'instant" + getListRoom()[position].getAvailableItem());
+        this.actionMenu();
+
     }
+
+
 
     //******************************************************************************************************************
     //                                                   UTILS
@@ -249,7 +285,7 @@ public class Game {
 
     //Seems to be unusual
     private void getPlayerInput(char choice) {
-        //Todo trouver pourqoui la variable fait dÃ©conner
+        //Todo trouver pourqoui la variable fait déconner
 //        char choice = '\0';
         try {
             choice = (char) (sc.next().toUpperCase().charAt(0));
@@ -262,4 +298,3 @@ public class Game {
 
     }
 }
-

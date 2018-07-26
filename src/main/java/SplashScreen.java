@@ -48,7 +48,6 @@ public class SplashScreen {
 
     //     0 Help to permute simple char into ascii art letter
     public void displayAsciiWord(String s) {
-
         String[][] matrix = new String[H][s.length()];
         s = s.toUpperCase();
 
@@ -56,7 +55,7 @@ public class SplashScreen {
             System.out.println();
             for (int k = 0; k < matrix[j].length; k++) {
                 if (characterHashMap.containsKey(s.charAt(k))) {
-                    matrix[j][k] = characterHashMap.get(s.charAt(k))[j] + " ";
+                    matrix[j][k] = characterHashMap.get(s.charAt(k))[j] + "  ";
                     System.out.print(matrix[j][k]);
                 } else
                     System.out.print("  ");

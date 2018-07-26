@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class Room {
     // Attributes : Name of room, ArrayList items, ArrayList pnj //
@@ -6,6 +6,7 @@ public class Room {
     private String name;
     private String[] availableRoomsName;
     private char[] availableChoice;
+    private ArrayList<Items> availableItemList = new ArrayList<>();
 
     //private static String item;
     //private NameRoom nameRoom;
@@ -68,11 +69,18 @@ public class Room {
 
     }
 
+    public ArrayList<Items> getAvailableItem() {
+        return this.availableItemList;
+    }
+
+    public void addAvailableItemList(Items item) {
+        this.availableItemList.add(item);
+    }
     // CHOICE ROOM //
 
     // ITEMS OF ROOM //
 
     // public  String getItem() { return item; }
 
-    // Methods : getRoom(), setRoom(), getAvailableItem(), getPnj(), getCorpse()
+    // Methods : getRoom(), setRoom(), (), getPnj(), getCorpse()
 }
