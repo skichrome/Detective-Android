@@ -78,11 +78,11 @@ public class Action implements Input {
         game.actionMenu();
     }
 
-    protected void observeRoom() {
+    public void observeRoom() {
 
-        ArrayList<ItemList> availableItem = this.item.getAvailableItem();/*room.getListRoom()[position].getAvailableItem();*/
-        if (availableItem.size() > 0) {
-            System.out.println(availableItem);
+//        ArrayList<ItemList> availableItem = room.getListRoom()[position].getAvailableItem();
+        if (item.getAvailableItem().size() > 0) {
+            System.out.println(item.getAvailableItem());
         } else {
             System.out.println("Rien à observer pour l'instant\n");
         }

@@ -69,14 +69,14 @@ public class Item {
     }
 
 
-    public void addAvailableItemList(ItemList item) {
+    private void addAvailableItemList(ItemList item) {
         this.getItemsList().add(item);
     }
 
     public void configureItem() {
         shuffleItemsIntoRooms(Room.listRoom);
         for (Room room : Room.listRoom) {
-//            System.out.println("liste des items disponibles dans " + room.getName() + " : " + getAvailableItem());
+            System.out.println("liste des items disponibles dans " + room.getName() + " : " + getAvailableItem());
         }
     }
 }
