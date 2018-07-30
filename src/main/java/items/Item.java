@@ -21,17 +21,12 @@ public class Item {
 
     // Getter & Setter
 
-    public ArrayList<ItemList> getItemsList() {
-        return itemList;
-    }
+
 
     private void setItemsToList() {
         itemList.addAll(Arrays.asList(ItemList.values()));
     }
 
-    public ArrayList<ItemList> getAvailableItem() {
-        return this.getItemsList();
-    }
 
     // ITEM Method
     private void shuffleItemsIntoRooms(Room[] listRoom) {
@@ -56,27 +51,25 @@ public class Item {
                     //get random item
                     itemID = this.generator.nextInt(itemList.size());
                     //add it to the available list of the room
-                    addAvailableItemList(itemList.get(itemID));
+                    room.addAvailableItemList(itemList.get(itemID));
                     //System.out.println(itemID);
                     //remove it from the list
-                    //itemList.remove(itemID);
+//                    itemList.remove(itemID);
                     count++;
 
                 }
-            } while (count <= MINIMUM_ITEM_BY_GAME);
+            } while (count <= MINIMUM_ITEM_BY_GAME || itemList.size() == 0);
         }
 
     }
 
 
-    private void addAvailableItemList(ItemList item) {
-        this.getItemsList().add(item);
-    }
+
 
     public void configureItem() {
         shuffleItemsIntoRooms(Room.listRoom);
         for (Room room : Room.listRoom) {
-            System.out.println("liste des items disponibles dans " + room.getName() + " : " + getAvailableItem());
+            System.out.println("liste des items disponibles dans " + room.getName() + " : " + room.getAvailableItem());
         }
     }
 }

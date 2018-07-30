@@ -80,9 +80,9 @@ public class Action implements Input {
 
     public void observeRoom() {
 
-//        ArrayList<ItemList> availableItem = room.getListRoom()[position].getAvailableItem();
-        if (item.getAvailableItem().size() > 0) {
-            System.out.println(item.getAvailableItem());
+        ArrayList<ItemList> availableItem = room.getListRoom()[position].getAvailableItem();
+        if (room.getAvailableItem().size() > 0) {
+            System.out.println(room.getAvailableItem());
         } else {
             System.out.println("Rien à observer pour l'instant\n");
         }

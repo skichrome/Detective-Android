@@ -1,5 +1,8 @@
 package rooms;
 
+import items.ItemList;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Room {
@@ -12,6 +15,7 @@ public class Room {
     private String name;
     private String[] availableRoomsName;
     private char[] availableChoice;
+    private ArrayList<ItemList> availableItemList = new ArrayList<>();
 
     public Room() {
     }
@@ -47,6 +51,14 @@ public class Room {
 
     public char[] getAvailableChoice() {
         return availableChoice;
+    }
+
+    public  void addAvailableItemList(ItemList item) {
+        this.availableItemList.add(item);
+    }
+
+    public ArrayList<ItemList> getAvailableItem() {
+        return this.availableItemList;
     }
 
     //******************************************************************************************************************

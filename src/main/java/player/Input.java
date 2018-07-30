@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public interface Input {
 
-    String exceptionMessage = "Veuillez taper sur entrée qu'une fois la saisie effectué!";
+    String exceptionMessage = "Veuillez taper sur entrée qu'une fois la saisie effectuée!";
     char NEW_GAME = 'N';
     char CONTINUE_GAME = 'C';
     char QUIT_GAME = 'Q';
