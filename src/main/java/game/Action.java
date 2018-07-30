@@ -14,7 +14,6 @@ public class Action implements Input {
     // CONSTANT
     public static int position;
     // INSTANTIATE
-    private Item item = new Item();
     private Room room = new Room();
     private Data data = new Data();
 
@@ -81,8 +80,11 @@ public class Action implements Input {
     public void observeRoom() {
 
         ArrayList<ItemList> availableItem = room.getListRoom()[position].getAvailableItem();
-        if (room.getAvailableItem().size() > 0) {
-            System.out.println(room.getAvailableItem());
+        if (availableItem.size() > 0) {
+            System.out.println("Après une brève inspection de la pièce, voici les objets disponibles : ");
+            for (ItemList item : availableItem) {
+                System.out.println("- "+item.getName());
+            }
         } else {
             System.out.println("Rien à observer pour l'instant\n");
         }
