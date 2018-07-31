@@ -1,11 +1,12 @@
 package rooms;
 
 import items.ItemList;
+import utils.PlayerInput;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Room {
+public class Room implements PlayerInput {
     // Attributes : Name of room, ArrayList items, ArrayList pnj //
 
     // CONSTANT
@@ -76,14 +77,14 @@ public class Room {
     private void roomIndexPosition() {
         // Bonus use of hashMap
         characterHashMap = new HashMap<>();
-        characterHashMap.put('H', 0);//hall
-        characterHashMap.put('C', 1);//kitchen
-        characterHashMap.put('W', 2);//Wc
-        characterHashMap.put('D', 3);//Dormitories
-        characterHashMap.put('B', 4);//library
-        characterHashMap.put('S', 5);//living-room
-        characterHashMap.put('O', 6);//office
-        characterHashMap.put('J', 7);//garden
+        characterHashMap.put(HALL, 0);//hall
+        characterHashMap.put(KITCHEN, 1);//kitchen
+        characterHashMap.put(WC, 2);//Wc
+        characterHashMap.put(DORMITORIES, 3);//Dormitories
+        characterHashMap.put(LIBRARY, 4);//library
+        characterHashMap.put(LIVING_ROOM, 5);//living-room
+        characterHashMap.put(OFFICE, 6);//office
+        characterHashMap.put(GARDEN, 7);//garden
     }
 
     public String toString() {
@@ -101,6 +102,8 @@ public class Room {
         }
         str.append(System.lineSeparator())
                 .append("-Retourner au menu des actions (A)")
+                .append(System.lineSeparator())
+                .append("-Observer la zone (O)")
                 .append(System.lineSeparator())
                 .append("Indiquez votre choix :");
 

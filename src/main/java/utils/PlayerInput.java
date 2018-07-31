@@ -10,6 +10,16 @@ public interface PlayerInput {
     char OBSERVE_ROOM = 'O';
     char RETURN_MAIN_MENU = 'R';
     char RETURN_ACTION_MENU = 'A';
+    // ROOM INPUT
+    char HALL = 'H';
+    char KITCHEN = 'K';
+    char WC = 'W';
+    char DORMITORIES = 'B';
+    char LIBRARY = 'L';
+    char LIVING_ROOM = 'S';
+    char OFFICE = 'F';
+    char GARDEN = 'J';
+
     // ERROR MESSAGE
     String DISPLAY_ERROR_MESSAGE = "Merci de sélectionner une des options proposées";
     String BAD_INPUT_ALERT = "Mauvaise(s) touche(s) ! Merci de réitérer votre choix : ";
@@ -22,7 +32,11 @@ public interface PlayerInput {
 
     // Check action menu input
     default boolean checkActionMenuInput(char input) {
-        return input != RETURN_MAIN_MENU && input != MOVE_INTO_ROOM && input != OBSERVE_ROOM;
+        return input != RETURN_MAIN_MENU && input != MOVE_INTO_ROOM;
     }
-    
+
+    // Check action menu and observe
+    default boolean checkMoveIntoRoom(char input) {
+        return input != RETURN_ACTION_MENU && input != OBSERVE_ROOM;
+    }
 }

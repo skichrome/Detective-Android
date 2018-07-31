@@ -8,6 +8,7 @@ import utils.PlayerInput;
 import utils.Utils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game implements PlayerInput {
@@ -20,6 +21,8 @@ public class Game implements PlayerInput {
     private Item item = new Item();
     private Room room = new Room();
     private Utils utils = new Utils();
+    private List<ItemList> backpack = new ArrayList<ItemList>();
+    private ArrayList<ItemList> availableItem;
 
     public Game() {
         // configuration
@@ -44,7 +47,6 @@ public class Game implements PlayerInput {
     private void printActionMenu() {
         System.out.println("Listes des actions possibles :\n\t"
                 + "-Se déplacer (D)\n\t"
-                + "-Observer la zone (O)\n\t"
                 + "-Retour menu principal (R)\n");
     }
 
@@ -112,8 +114,8 @@ public class Game implements PlayerInput {
         if (actionChoice == MOVE_INTO_ROOM) {
             this.moveIntoRoom(sc);
             //OBSERVE
-        } else if (actionChoice == OBSERVE_ROOM) {
-            this.observeRoom();
+            // } else if (actionChoice == OBSERVE_ROOM) {
+            //     this.observeRoom();
             //BACK MENU
         } else {
             //Go back to the menu when finish the game
@@ -203,29 +205,82 @@ public class Game implements PlayerInput {
             }
 
 
-            if (choice != RETURN_ACTION_MENU)
+            if (choice != RETURN_ACTION_MENU && choice != OBSERVE_ROOM)
                 System.out.println(Room.listRoom[checkRoomPlayerChoice(choice)]);
 
-        } while (choice != RETURN_ACTION_MENU);
-        System.out.println("=> Retour à la liste des actions\n");
+        } while (checkMoveIntoRoom(choice));
 
-        this.actionMenu();
+        if (choice == OBSERVE_ROOM) {
+            this.observeRoom();
+        } else {
+            System.out.println("=> Retour à la liste des actions\n");
+            this.actionMenu();
+        }
+
     }
+
+//    private void observeRoom() {
+//
+//        ArrayList<ItemList> availableItem = room.getListRoom()[position].getAvailableItem();
+//        if (availableItem.size() > 0) {
+//            System.out.println("Après une brève inspection de la pièce, voici les objets disponibles : ");
+//            for (ItemList item : availableItem) {
+//                System.out.println("- " + item.getName());
+//            }
+//            System.out.println(System.lineSeparator());
+//        } else {
+//            System.out.println("Rien à observer pour l'instant\n");
+//        }
+//
+//        this.actionMenu();
+//    }
+
 
     private void observeRoom() {
 
-        ArrayList<ItemList> availableItem = room.getListRoom()[position].getAvailableItem();
+        this.availableItem = room.getListRoom()[position].getAvailableItem();
         if (availableItem.size() > 0) {
             System.out.println("Après une brève inspection de la pièce, voici les objets disponibles : ");
-            for (ItemList item : availableItem) {
-                System.out.println("- " + item.getName());
+            for (int i = 0; i < availableItem.size(); i++) {
+                System.out.println("- (" + i + ") " + availableItem.get(i).getName());
             }
+
             System.out.println(System.lineSeparator());
         } else {
             System.out.println("Rien à observer pour l'instant\n");
         }
 
+        takeItem(0);
         this.actionMenu();
+
     }
+
+    private void takeItem(int index) {
+
+        this.backpack.add(this.availableItem.get(index));
+        System.out.println("Vous avez mis dans votre sac : " + this.availableItem.get(index));
+        this.availableItem.remove(index);
+        System.out.println(this.availableItem.get(index));
+    }
+
+    private void dropItem(int index) {
+        ItemList itemToDrop = this.backpack.get(index);
+        room.getListRoom()[position].addAvailableItemList(itemToDrop);
+        this.backpack.remove(index);
+
+    }
+
+    private void showBackpackContent() {
+        if (this.backpack.size() > 0) {
+            System.out.println("Voici le contenu de votre sac : ");
+            for (ItemList item : this.backpack) {
+                System.out.println("- " + item.getName() + "\n");
+            }
+        } else {
+            System.out.println("il n'y a rien dans votre sac.");
+        }
+    }
+
+    // TODO create a menu ItemMenuInteraction
 
 }

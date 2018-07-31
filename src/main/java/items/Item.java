@@ -55,7 +55,7 @@ public class Item {
     public void configureItem() {
         shuffleItemsIntoRooms(Room.listRoom);
         for (Room room : Room.listRoom) {
-            System.out.println("liste des items disponibles dans " + room.getName() + " : " + room.getAvailableItem());
+//            System.out.println("liste des items disponibles dans " + room.getName() + " : " + room.getAvailableItem());
         }
     }
 }
