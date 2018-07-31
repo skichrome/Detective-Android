@@ -8,4 +8,8 @@ out/
 .classpath
 .project
 .settings/
+<<<<<<< HEAD
 .gradle/
+=======
+/bin/
+>>>>>>> 2a3491ac8882423cd635706f4ad7ad6bced4c0cd

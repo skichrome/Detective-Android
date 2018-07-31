@@ -1,19 +1,12 @@
+package datas;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Data {
 
-    private String fileName = "saveRoom.txt";
-    private File file = new File(fileName);
+    String fileName = "saveRoom.txt";
+    File file = new File(fileName);
 
-    public Data() {
-    }
 
     public void saveRoom(char choice) {
         //on demande à l'utilisateur s'il veut sauvegarder sa salle
@@ -40,11 +33,10 @@ public class Data {
 
             String line = "";
             // lit la ligne
-            while ((line = bufferedReader.readLine()) != null) {
+            if ((line = bufferedReader.readLine()) == null) {
+                letter = 'H';
+            } else {
                 letter = line.charAt(0);
-                // affiche la ligne
-//                System.out.println(letter);
-
             }
 
 
@@ -70,6 +62,4 @@ public class Data {
         return letter;
     }
 
-
 }
-

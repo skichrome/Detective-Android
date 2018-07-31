@@ -1,4 +1,6 @@
-public enum NameRoom {
+package rooms;
+
+public enum RoomList {
 
     HALL("le hall", "la bibliothèque (B),la cuisine (C),le salon (S)"),
     WC("la salle de bain", "le dortoir (D),le salon (S)"),
@@ -13,7 +15,7 @@ public enum NameRoom {
     private String availableRooms;
 
     //Constructeur
-    NameRoom(String name, String availableRooms) {
+    RoomList(String name, String availableRooms) {
         this.name = name;
         this.availableRooms = availableRooms;
     }
