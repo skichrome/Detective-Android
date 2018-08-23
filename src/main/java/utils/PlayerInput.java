@@ -19,6 +19,11 @@ public interface PlayerInput {
     char LIVING_ROOM = 'S';
     char OFFICE = 'F';
     char GARDEN = 'J';
+    // ITEM INPUT
+    char TAKE = 'T';
+    char DROP = 'D';
+    char SHOW_BACKPACK = 'S';
+    char CHECK_INVENTORY = 'I';
 
     // ERROR MESSAGE
     String DISPLAY_ERROR_MESSAGE = "Merci de sélectionner une des options proposées";
@@ -32,11 +37,16 @@ public interface PlayerInput {
 
     // Check action menu input
     default boolean checkActionMenuInput(char input) {
-        return input != RETURN_MAIN_MENU && input != MOVE_INTO_ROOM;
+        return input != RETURN_MAIN_MENU && input != MOVE_INTO_ROOM && input != CHECK_INVENTORY;
     }
 
     // Check action menu and observe
     default boolean checkMoveIntoRoom(char input) {
         return input != RETURN_ACTION_MENU && input != OBSERVE_ROOM;
+    }
+
+    // Check action menu input
+    default boolean checkItemMenuInput(char input) {
+        return input != TAKE && input != DROP && input != SHOW_BACKPACK;
     }
 }

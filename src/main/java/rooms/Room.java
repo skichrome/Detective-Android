@@ -100,12 +100,12 @@ public class Room implements PlayerInput {
             str.append(element);
             str.append(System.lineSeparator());
         }
-       /* str.append(System.lineSeparator())
-                .append("-Retourner au menu des actions (A)")
-                .append(System.lineSeparator())*/
-                /*.append("-Observer la zone (O)")
-                .append(System.lineSeparator())
-                .append("Indiquez votre choix :")*/;
+//        str.append(System.lineSeparator())
+//                .append("-Retourner au menu des actions (A)")
+//                .append(System.lineSeparator())
+//                .append("-Observer la zone (O)")
+//                .append(System.lineSeparator())
+//                .append("Indiquez votre choix :");
 
         return str.toString();
 
