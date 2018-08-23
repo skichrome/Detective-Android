@@ -195,6 +195,9 @@ public class Game implements PlayerInput {
             System.out.println(this.room.getListRoom()[position].toString());
         }
 
+        /**Modif**/
+        this.observeRoom();
+
         do {
             try {
                 choice = sc.nextLine().toUpperCase().charAt(0);
@@ -204,36 +207,22 @@ public class Game implements PlayerInput {
                 System.out.println(EXCEPTION_MESSAGE + e.getMessage());
             }
 
-
-            if (choice != RETURN_ACTION_MENU && choice != OBSERVE_ROOM)
+            if (choice != RETURN_ACTION_MENU /*&& choice != OBSERVE_ROOM*/)
                 System.out.println(Room.listRoom[checkRoomPlayerChoice(choice)]);
+
+
 
         } while (checkMoveIntoRoom(choice));
 
-        if (choice == OBSERVE_ROOM) {
-            this.observeRoom();
-        } else {
+        if (choice == RETURN_ACTION_MENU) {
             System.out.println("=> Retour à la liste des actions\n");
             this.actionMenu();
+
+        } else {
+            //ITEM
         }
 
     }
-
-//    private void observeRoom() {
-//
-//        ArrayList<ItemList> availableItem = room.getListRoom()[position].getAvailableItem();
-//        if (availableItem.size() > 0) {
-//            System.out.println("Après une brève inspection de la pièce, voici les objets disponibles : ");
-//            for (ItemList item : availableItem) {
-//                System.out.println("- " + item.getName());
-//            }
-//            System.out.println(System.lineSeparator());
-//        } else {
-//            System.out.println("Rien à observer pour l'instant\n");
-//        }
-//
-//        this.actionMenu();
-//    }
 
 
     private void observeRoom() {
@@ -250,7 +239,7 @@ public class Game implements PlayerInput {
             System.out.println("Rien à observer pour l'instant\n");
         }
 
-        takeItem(0);
+//        takeItem(0);
         this.actionMenu();
 
     }
@@ -258,7 +247,7 @@ public class Game implements PlayerInput {
     private void takeItem(int index) {
 
         this.backpack.add(this.availableItem.get(index));
-        System.out.println("Vous avez mis dans votre sac : " + this.availableItem.get(index));
+        System.out.println("Vous avez mis dans votre sac : \n" + this.availableItem.get(index));
         this.availableItem.remove(index);
         System.out.println(this.availableItem.get(index));
     }
