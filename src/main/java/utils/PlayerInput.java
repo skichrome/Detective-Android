@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Scanner;
+
 public interface PlayerInput {
 
     // INPUT VAR
@@ -22,11 +24,12 @@ public interface PlayerInput {
     // ITEM INPUT
     char TAKE = 'T';
     char DROP = 'D';
-    char SHOW_BACKPACK = 'S';
+    char SHOW_BACKPACK = 'B';
     char CHECK_INVENTORY = 'I';
 
     // ERROR MESSAGE
     String DISPLAY_ERROR_MESSAGE = "Merci de sélectionner une des options proposées";
+    String DISPLAY_ERROR_MESSAGE_2 = "Vous devez indiquer un chiffre ici !";
     String BAD_INPUT_ALERT = "Mauvaise(s) touche(s) ! Merci de réitérer votre choix : ";
     String EXCEPTION_MESSAGE = "Veuillez taper sur entrée qu'une fois la saisie effectuée!";
 
@@ -48,5 +51,31 @@ public interface PlayerInput {
     // Check action menu input
     default boolean checkItemMenuInput(char input) {
         return input != TAKE && input != DROP && input != SHOW_BACKPACK;
+    }
+
+    // Get the player char input in the game
+    default char getPlayerInput(Scanner sc) {
+        char menuChoice = '\0';
+        try {
+            menuChoice = sc.nextLine().toUpperCase().charAt(0);
+        } catch (IndexOutOfBoundsException n) {
+            System.err.println(EXCEPTION_MESSAGE);
+        } catch (NullPointerException e) {
+            System.err.println(EXCEPTION_MESSAGE + e.getMessage());
+        }
+        return menuChoice;
+    }
+
+    // Get the player input in the game
+    default int getPlayerInt(Scanner sc) {
+        int intChoice = '\0';
+        try {
+            intChoice = sc.nextInt();
+        } catch (IndexOutOfBoundsException n) {
+            System.err.println(EXCEPTION_MESSAGE);
+        } catch (NullPointerException e) {
+            System.err.println(EXCEPTION_MESSAGE + e.getMessage());
+        }
+        return intChoice;
     }
 }

@@ -9,7 +9,7 @@ import java.util.Random;
 public class Item {
 
     //limit the  number of item in a room
-    private static int ITEM_LIMIT = 3;
+    private final static int ITEM_LIMIT = 3;
     private ArrayList<ItemList> itemList = new ArrayList<>();
     private Random generator = new Random();
 
@@ -25,7 +25,7 @@ public class Item {
 
 
     // ITEM Method
-    public void shuffleItemsIntoRooms(Room[] listRoom) {
+    private void shuffleItemsIntoRooms(Room[] listRoom) {
         //random generator to shuffle number
         int numberOfItem;
         for (Room room : listRoom) {
