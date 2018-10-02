@@ -25,7 +25,7 @@ public interface PlayerInput {
     char TAKE = 'T';
     char DROP = 'D';
     char SHOW_BACKPACK = 'B';
-    char CHECK_INVENTORY = 'I';
+//    char CHECK_INVENTORY = 'I';
 
     // ERROR MESSAGE
     String DISPLAY_ERROR_MESSAGE = "Merci de sélectionner une des options proposées";
@@ -40,7 +40,7 @@ public interface PlayerInput {
 
     // Check action menu input
     default boolean checkActionMenuInput(char input) {
-        return input != RETURN_MAIN_MENU && input != MOVE_INTO_ROOM && input != CHECK_INVENTORY;
+        return input != RETURN_MAIN_MENU && input != MOVE_INTO_ROOM /*&& input != CHECK_INVENTORY*/;
     }
 
     // Check action menu and observe
@@ -50,7 +50,7 @@ public interface PlayerInput {
 
     // Check action menu input
     default boolean checkItemMenuInput(char input) {
-        return input != TAKE && input != DROP && input != SHOW_BACKPACK;
+        return input != TAKE && input != RETURN_ACTION_MENU && input != SHOW_BACKPACK; // Return action menu take place of the drop item methods
     }
 
     // Get the player char input in the game

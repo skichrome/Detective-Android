@@ -102,8 +102,8 @@ public class Room implements PlayerInput {
         }
         str.append(System.lineSeparator())
                 .append("-Retourner au menu des actions (A)")
-//                .append(System.lineSeparator())
-//                .append("-Observer la zone (O)")
+                .append(System.lineSeparator())
+                .append("-Observer la zone (O)")
                 .append(System.lineSeparator())
                 .append("Indiquez votre choix :");
 

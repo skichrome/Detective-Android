@@ -33,15 +33,16 @@ public interface MenuUtility {
     default void printActionMenu() {
         System.out.println("Listes des actions possibles :\n\t"
                 + "-Se déplacer (D)\n\t"
-                + "-Vérifier l'inventaire (I)\n\t"
+//                + "-Vérifier l'inventaire (I)\n\t"
                 + "-Retour menu principal (R)\n");
     }
 
     default void printItemMenu() {
-        System.out.println("Vous êtes dans le menu des inventaires.\nListes des actions possibles :\n\t"
+        System.out.println("Listes des actions possibles :\n\t"
                 + "-Prendre objet (T)\n\t"
-                + "-Jeter objet (D)\n\t"
-                + "-Voir contenu du sac (B)");
+//                + "-Jeter objet (D)\n\t"
+                + "-Voir contenu du sac (B)\n\t"
+                + "-Retour au menu des actions (A)");
     }
 
 }
