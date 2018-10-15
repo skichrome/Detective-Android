@@ -221,35 +221,67 @@ public class Game implements PlayerInput, MenuUtility {
         this.showBackpackContent();
     }
 
-    // TODO Aurélia : Need to handle the case showBackpackContent method
-      private void showBackpackContent() {
-      	char choice;
-          if (this.backpack.size() > 0) {
-          	this.bagPackMenu();
-              //System.out.println("Voici le contenu de votre sac : ");
-              for (ItemList item : this.backpack) {
-                  System.out.println("- " + item.getName() + "\n");
-              }
-          } else {
-
-          	do {
-          		this.EmptyBagPackMenu();
-          		choice = getPlayerInput(sc);
-
-          		if (choice == RETURN_ACTION_MENU) {
-          			System.out.println("=> Retour à la liste des actions\n");
-                  	this.actionMenu();
-                  } else if (choice == RETURN_MAIN_MENU) {
-                  	System.out.println("=> Retour au menu principal\n");
-                  	this.mainMenu();
-                  }
-              } while (choice != RETURN_ACTION_MENU || choice != RETURN_MAIN_MENU);
-
-
-
-          }
-          //Todo : whatever the situation we need to do something here otherwise the game is over
-      }
+//    // TODO Aurélia : Need to handle the case showBackpackContent method
+//<<<<<<< HEAD
+//      private void showBackpackContent() {
+//      	char choice;
+//          if (this.backpack.size() > 0) {
+//          	this.bagPackMenu();
+//              //System.out.println("Voici le contenu de votre sac : ");
+//              for (ItemList item : this.backpack) {
+//                  System.out.println("- " + item.getName() + "\n");
+//              }
+//          } else {
+//
+//          	do {
+//          		this.EmptyBagPackMenu();
+//          		choice = getPlayerInput(sc);
+//
+//          		if (choice == RETURN_ACTION_MENU) {
+//          			System.out.println("=> Retour à la liste des actions\n");
+//                  	this.actionMenu();
+//                  } else if (choice == RETURN_MAIN_MENU) {
+//                  	System.out.println("=> Retour au menu principal\n");
+//                  	this.mainMenu();
+//                  }
+//              } while (choice != RETURN_ACTION_MENU || choice != RETURN_MAIN_MENU);
+//
+//
+//
+//          }
+//          //Todo : whatever the situation we need to do something here otherwise the game is over
+//      }
+//=======
+    private void showBackpackContent() {
+    	char choice;
+        if (this.backpack.size() > 0) {
+        	this.bagPackMenu();
+            //System.out.println("Voici le contenu de votre sac : ");
+            for (ItemList item : this.backpack) {
+                System.out.println("- " + item.getName() + "\n");
+            }
+        } else {
+        	
+        	do {
+        		this.EmptyBagPackMenu();
+        		choice = getPlayerInput(sc); 
+        		
+        		if (choice == RETURN_ACTION_MENU) {
+        			System.out.println("=> Retour à la liste des actions\n");
+                	this.actionMenu();
+                } else if (choice == RETURN_MAIN_MENU) {
+                	System.out.println("=> Retour au menu principal\n");
+                	this.mainMenu();
+                }
+            } while (choice != RETURN_ACTION_MENU || choice != RETURN_MAIN_MENU);
+            
+            
+            
+        }
+        //Todo : whatever the situation we need to do something here otherwise the game is over
+    }
+//
+//>>>>>>> c641f2b1c8c19655ceedcb0719aaeae07a74d0e9
 
     private void itemMenuInteraction() {
         char itemChoice;
