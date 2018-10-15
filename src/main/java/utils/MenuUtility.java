@@ -33,7 +33,7 @@ public interface MenuUtility {
     default void printActionMenu() {
         System.out.println("Listes des actions possibles :\n\t"
                 + "-Se déplacer (D)\n\t"
-//                + "-Vérifier l'inventaire (I)\n\t"
+                + "-Vérifier l'inventaire (I)\n\t"
                 + "-Retour menu principal (R)\n");
     }
 
@@ -43,6 +43,19 @@ public interface MenuUtility {
 //                + "-Jeter objet (D)\n\t"
                 + "-Voir contenu du sac (B)\n\t"
                 + "-Retour au menu des actions (A)");
+    }
+
+    default void bagPackMenu() {
+        System.out.println("Vous êtes dans votre sac.\nListes des actions possibles :\n\t"
+                + "-Jeter objet (D)\n\t"
+        		+ "-Retour menu des actions (A)\n\t"
+        		+ "-Retour menu principal (R)\n");
+    }
+
+    default void EmptyBagPackMenu() {
+        System.out.println("Vous êtes dans votre sac mais il est vide.\nListes des actions possibles :\n\t"
+        		+ "-Retour menu des actions (A)\n\t"
+        		+ "-Retour menu principal (R)\n");
     }
 
 }

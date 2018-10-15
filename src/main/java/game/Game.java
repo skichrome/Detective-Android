@@ -77,9 +77,9 @@ public class Game implements PlayerInput, MenuUtility {
 //            case OBSERVE_ROOM:
 //                this.observeRoom();
 //                break;
-//            case CHECK_INVENTORY:
-//                this.itemMenuInteraction();
-//                break;
+           case CHECK_INVENTORY:
+               this.itemMenuInteraction();
+               break;
             default:
                 //Go back to the menu when finish the game
                 System.out.println(" => Vous retournez au menu principal.");
@@ -206,7 +206,7 @@ public class Game implements PlayerInput, MenuUtility {
         this.backpack.add(this.availableItem.get(index));
         System.out.println("Vous avez mis dans votre sac : \n" + this.availableItem.get(index));
         this.availableItem.remove(index);
-        // TODO 
+        // TODO
         this.showBackpackContent();
     }
 
@@ -222,18 +222,34 @@ public class Game implements PlayerInput, MenuUtility {
     }
 
     // TODO Aurélia : Need to handle the case showBackpackContent method
-    private void showBackpackContent() {
-        if (this.backpack.size() > 0) {
-            System.out.println("Voici le contenu de votre sac : ");
-            for (ItemList item : this.backpack) {
-                System.out.println("- " + item.getName() + "\n");
-            }
-        } else {
-            System.out.println("il n'y a rien dans votre sac.");
-        }
-        //Todo : whatever the situation we need to do something here otherwise the game is over
-    }
+      private void showBackpackContent() {
+      	char choice;
+          if (this.backpack.size() > 0) {
+          	this.bagPackMenu();
+              //System.out.println("Voici le contenu de votre sac : ");
+              for (ItemList item : this.backpack) {
+                  System.out.println("- " + item.getName() + "\n");
+              }
+          } else {
 
+          	do {
+          		this.EmptyBagPackMenu();
+          		choice = getPlayerInput(sc);
+
+          		if (choice == RETURN_ACTION_MENU) {
+          			System.out.println("=> Retour à la liste des actions\n");
+                  	this.actionMenu();
+                  } else if (choice == RETURN_MAIN_MENU) {
+                  	System.out.println("=> Retour au menu principal\n");
+                  	this.mainMenu();
+                  }
+              } while (choice != RETURN_ACTION_MENU || choice != RETURN_MAIN_MENU);
+
+
+
+          }
+          //Todo : whatever the situation we need to do something here otherwise the game is over
+      }
 
     private void itemMenuInteraction() {
         char itemChoice;
