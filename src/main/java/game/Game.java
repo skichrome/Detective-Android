@@ -22,7 +22,7 @@ public class Game implements PlayerInput, MenuUtility {
     private Item item = new Item();
     private Room room = new Room();
     private Utils utils = new Utils();
-    private List<ItemList> backpack = new ArrayList<ItemList>();
+    private List<ItemList> backpack = new ArrayList<>();
     private ArrayList<ItemList> availableItem;
 
     public Game() {
@@ -77,9 +77,9 @@ public class Game implements PlayerInput, MenuUtility {
 //            case OBSERVE_ROOM:
 //                this.observeRoom();
 //                break;
-            case CHECK_INVENTORY:
-                this.itemMenuInteraction();
-                break;
+//            case CHECK_INVENTORY:
+//                this.itemMenuInteraction();
+//                break;
             default:
                 //Go back to the menu when finish the game
                 System.out.println(" => Vous retournez au menu principal.");
@@ -159,7 +159,6 @@ public class Game implements PlayerInput, MenuUtility {
 
     private void moveIntoRoom(Scanner sc) {
         char choice;
-//        this.observeRoom();
         // Check if there's a room saved otherwise launch room by default
         if (utils.ifSaving()) {
             int pos = Room.characterHashMap.get(data.loadRoom());
@@ -171,7 +170,6 @@ public class Game implements PlayerInput, MenuUtility {
         do {
             choice = getPlayerInput(sc);
             if (checkMoveIntoRoom(choice)) {
-//                this.observeRoom();
                 System.out.println(Room.listRoom[checkRoomPlayerChoice(choice)]);
             }
         } while (checkMoveIntoRoom(choice));
@@ -182,7 +180,6 @@ public class Game implements PlayerInput, MenuUtility {
         } else if (choice == OBSERVE_ROOM) {
             System.out.println("=> Vous observez la pièce");
             this.observeRoom();
-            this.moveIntoRoom(sc);
         }
 
     }
@@ -200,7 +197,7 @@ public class Game implements PlayerInput, MenuUtility {
         } else {
             System.out.println("Rien à observer pour l'instant\n");
         }
-
+        this.itemMenuInteraction();
     }
 
     private void takeItem() {
@@ -209,7 +206,8 @@ public class Game implements PlayerInput, MenuUtility {
         this.backpack.add(this.availableItem.get(index));
         System.out.println("Vous avez mis dans votre sac : \n" + this.availableItem.get(index));
         this.availableItem.remove(index);
-
+        // TODO 
+        this.showBackpackContent();
     }
 
     private void dropItem() {
@@ -219,9 +217,11 @@ public class Game implements PlayerInput, MenuUtility {
         room.getListRoom()[POSITION].addAvailableItemList(itemToDrop);
         System.out.println("vous venez de jeter " + this.backpack.get(index).getName());
         this.backpack.remove(index);
+        // TODO
         this.showBackpackContent();
     }
 
+    // TODO Aurélia : Need to handle the case showBackpackContent method
     private void showBackpackContent() {
     	char choice;
         if (this.backpack.size() > 0) {
@@ -248,6 +248,7 @@ public class Game implements PlayerInput, MenuUtility {
             
             
         }
+        //Todo : whatever the situation we need to do something here otherwise the game is over
     }
 
 
@@ -256,21 +257,24 @@ public class Game implements PlayerInput, MenuUtility {
         this.printItemMenu();
 
         do {
-           itemChoice = getPlayerInput(sc);
+            itemChoice = getPlayerInput(sc);
             if (checkItemMenuInput(itemChoice))
                 System.err.println(DISPLAY_ERROR_MESSAGE);
         } while (checkItemMenuInput(itemChoice));
 
         switch (itemChoice) {
             case TAKE:
-                this.observeRoom();
                 this.takeItem();
                 break;
-            case DROP:
-                this.dropItem();
-                break;
+//            case DROP:
+//                this.dropItem();
+//                break;
             case SHOW_BACKPACK:
                 this.showBackpackContent();
+                break;
+            case RETURN_ACTION_MENU:
+                System.out.println("=> Retour à la liste des actions\n");
+                this.actionMenu();
                 break;
             default:
                 break;
@@ -280,7 +284,7 @@ public class Game implements PlayerInput, MenuUtility {
     private int setItemIndex() {
         int index;
         do {
-           index = getPlayerInt(sc);
+            index = getPlayerInt(sc);
             if (index < 0 || index >= this.availableItem.size())
                 System.err.println(DISPLAY_ERROR_MESSAGE_2);
         } while (index < 0 || index >= this.availableItem.size());
