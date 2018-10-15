@@ -40,8 +40,20 @@ public interface MenuUtility {
     default void printItemMenu() {
         System.out.println("Vous êtes dans le menu des inventaires.\nListes des actions possibles :\n\t"
                 + "-Prendre objet (T)\n\t"
-                + "-Jeter objet (D)\n\t"
                 + "-Voir contenu du sac (B)");
+    }
+    
+    default void bagPackMenu() {
+        System.out.println("Vous êtes dans votre sac.\nListes des actions possibles :\n\t"
+                + "-Jeter objet (D)\n\t"
+        		+ "-Retour menu des actions (A)\n\t"
+        		+ "-Retour menu principal (R)\n");
+    }
+    
+    default void EmptyBagPackMenu() {
+        System.out.println("Vous êtes dans votre sac mais il est vide.\nListes des actions possibles :\n\t"
+        		+ "-Retour menu des actions (A)\n\t"
+        		+ "-Retour menu principal (R)\n");
     }
 
 }

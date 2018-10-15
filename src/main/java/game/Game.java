@@ -223,13 +223,30 @@ public class Game implements PlayerInput, MenuUtility {
     }
 
     private void showBackpackContent() {
+    	char choice;
         if (this.backpack.size() > 0) {
-            System.out.println("Voici le contenu de votre sac : ");
+        	this.bagPackMenu();
+            //System.out.println("Voici le contenu de votre sac : ");
             for (ItemList item : this.backpack) {
                 System.out.println("- " + item.getName() + "\n");
             }
         } else {
-            System.out.println("il n'y a rien dans votre sac.");
+        	
+        	do {
+        		this.EmptyBagPackMenu();
+        		choice = getPlayerInput(sc); 
+        		
+        		if (choice == RETURN_ACTION_MENU) {
+        			System.out.println("=> Retour à la liste des actions\n");
+                	this.actionMenu();
+                } else if (choice == RETURN_MAIN_MENU) {
+                	System.out.println("=> Retour au menu principal\n");
+                	this.mainMenu();
+                }
+            } while (choice != RETURN_ACTION_MENU || choice != RETURN_MAIN_MENU);
+            
+            
+            
         }
     }
 
