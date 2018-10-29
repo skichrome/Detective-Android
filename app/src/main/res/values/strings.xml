@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Detective Android</string>
+    <string name="teaser">Vous êtes appelez sur une enquête pour élucider un meurtre. Soyez vigilant !</string>
 </resources>
