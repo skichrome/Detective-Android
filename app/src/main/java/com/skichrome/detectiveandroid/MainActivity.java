@@ -1,4 +1,4 @@
-package com.student.android.detectiveandroid;
+package com.skichrome.detectiveandroid;
 
 import android.content.Intent;
 import android.os.Bundle;

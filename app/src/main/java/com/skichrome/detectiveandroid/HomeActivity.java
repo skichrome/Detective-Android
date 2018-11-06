@@ -1,4 +1,4 @@
-package com.student.android.detectiveandroid;
+package com.skichrome.detectiveandroid;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

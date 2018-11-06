@@ -1,4 +1,4 @@
-package com.student.android.detectiveandroid;
+package com.skichrome.detectiveandroid;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -23,6 +23,6 @@ public class ExampleInstrumentedTest
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.student.android.detectiveandroid", appContext.getPackageName());
+        assertEquals("com.skichrome.detectiveandroid", appContext.getPackageName());
     }
 }

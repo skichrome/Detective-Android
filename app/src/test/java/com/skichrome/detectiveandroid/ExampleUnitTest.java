@@ -1,4 +1,4 @@
-package com.student.android.detectiveandroid;
+package com.skichrome.detectiveandroid;
 
 import org.junit.Test;
 
