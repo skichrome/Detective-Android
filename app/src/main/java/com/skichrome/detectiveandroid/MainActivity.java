@@ -3,15 +3,20 @@ package com.skichrome.detectiveandroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity
 {
+    @BindView(R.id.activity_main_progress_bar) ProgressBar progressBar;
+
     private Timer wait = null;
 
     @Override
@@ -41,6 +46,7 @@ public class MainActivity extends AppCompatActivity
 
     private void startAutomatically()
     {
+        progressBar.setVisibility(View.VISIBLE);
         wait = new Timer();
         wait.schedule(new TimerTask()
         {
@@ -58,6 +64,7 @@ public class MainActivity extends AppCompatActivity
 
     private void startHomeActivity()
     {
+        progressBar.setVisibility(View.INVISIBLE);
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(intent);
     }

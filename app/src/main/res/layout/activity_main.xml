@@ -27,25 +27,36 @@
         android:id="@+id/activity_main_text_teaser"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/str_activity_main_teaser"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toTopOf="@+id/activity_main_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/activity_main_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/btn_shape_style"
         android:text="@string/str_activity_main_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/activity_main_progress_bar"
         app:layout_constraintEnd_toEndOf="@+id/activity_main_text_teaser"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/activity_main_text_teaser" />
+
+    <ProgressBar
+        android:id="@+id/activity_main_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:indeterminate="true"
+        android:progress="@android:integer/config_mediumAnimTime"
+        app:layout_constraintBottom_toBottomOf="@+id/activity_main_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
