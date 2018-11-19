@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">Detective Android</string>
 
-    <string name="str_activity_main_btn">OK, skip</string>
+    <string name="str_activity_main_btn">Loading</string>
     <string name="str_activity_main_teaser">Vous êtes appelés sur une enquête pour élucider un meurtre. Soyez vigilant !</string>
+    <string name="frag_start_game_textview_presentation">Bienvenue au manoir du Baron de la loire, entrez-y en cliquant sur l\'entrée au centre !</string>
 
     <string name="str_activity_home_btn_new_game">Sart new game</string>
     <string name="str_activity_home_btn_resume_game">Resume previous game</string>
     <string name="str_activity_home_btn_exit_game">Exit game</string>
 
-
     <string name="content_desc_activity_main_background_image">background image</string>
     <string name="content_desc_activity_home_foreground_img">main image of screen</string>
+    <string name="content_desc_frag_start_game_background_img">main image of screen</string>
 </resources>
