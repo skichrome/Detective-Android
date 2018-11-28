@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/activity_game_menu_pause"
+        android:checkable="false"
+        android:icon="@android:drawable/ic_media_pause"
+        android:title="@string/menu_pause"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/activity_game_menu_map_access"
+        android:checkable="false"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        android:title="@string/menu_map"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+</menu>

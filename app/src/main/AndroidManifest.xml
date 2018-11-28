@@ -24,7 +24,8 @@
 
         <activity android:name=".activities.HomeActivity" />
 
-        <activity android:name=".activities.GameActivity" />
+        <activity android:name=".activities.GameActivity"
+            android:parentActivityName=".activities.HomeActivity"/>
     </application>
 
 </manifest>
