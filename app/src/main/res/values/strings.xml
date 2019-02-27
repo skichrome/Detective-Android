@@ -12,6 +12,7 @@
     <string name="content_desc_activity_main_background_image">background image</string>
     <string name="content_desc_activity_home_foreground_img">main image of screen</string>
     <string name="content_desc_frag_start_game_background_img">main image of screen</string>
+    <string name="dialog_frag_content_desc">map of the game</string>
 
     <string name="activity_game_inventory_access_desc">access to user inventory and game options</string>
     <string name="menu_pause">Pause</string>

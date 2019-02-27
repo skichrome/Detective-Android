@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.skichrome.detectiveandroid.R;
 import com.skichrome.detectiveandroid.base.BaseActivity;
+import com.skichrome.detectiveandroid.fragments.MapDialogFragment;
 import com.skichrome.detectiveandroid.fragments.StartGameFragment;
 
 import butterknife.BindView;
@@ -73,7 +74,9 @@ public class GameActivity extends BaseActivity
         switch (item.getItemId())
         {
             case R.id.activity_game_menu_pause : return true;
-            case R.id.activity_game_menu_map_access : return true;
+            case R.id.activity_game_menu_map_access :
+                this.launchMapDialogFragment();
+                return true;
             default : return super.onOptionsItemSelected(item);
         }
     }
@@ -91,5 +94,11 @@ public class GameActivity extends BaseActivity
     {
         if (mStartGameFragment == null) mStartGameFragment = StartGameFragment.newInstance();
         displayFragment(mStartGameFragment);
+    }
+
+    private void launchMapDialogFragment()
+    {
+        MapDialogFragment dialogFragment = new MapDialogFragment();
+        dialogFragment.show(getSupportFragmentManager(), "MyCustomDialog");
     }
 }
