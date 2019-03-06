@@ -11,11 +11,32 @@ import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment
 {
+
+    // =======================================
+    //              Interface(s)
+    // =======================================
+
+    public interface ButtonListeners
+    {
+        void onClickBtn(Fragment fragment);
+    }
+
+    // =======================================
+    //            Abstract Methods
+    // =======================================
+
     protected abstract int getFragmentLayout();
     protected abstract void configureFragment();
-    protected abstract void updateFragment();
+
+    // =======================================
+    //              Constructor
+    // =======================================
 
     public BaseFragment() { }
+
+    // =======================================
+    //           Superclass Methods
+    // =======================================
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -23,10 +44,7 @@ public abstract class BaseFragment extends Fragment
         View view = inflater.inflate(this.getFragmentLayout(), container, false);
 
         ButterKnife.bind(this, view);
-
         this.configureFragment();
-        this.updateFragment();
-
         return view;
     }
 }

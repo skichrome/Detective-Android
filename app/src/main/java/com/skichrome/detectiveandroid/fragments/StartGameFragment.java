@@ -9,33 +9,42 @@ import com.skichrome.detectiveandroid.base.BaseFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import java.lang.ref.WeakReference;
+
 public class StartGameFragment extends BaseFragment
 {
-    //=========================
-    // Fields
-    //=========================
+    // =======================================
+    //                  Fields
+    // =======================================
 
-    @BindView(R.id.frag_start_game_btn) Button btn;
+    @BindView(R.id.frag_start_game_btn) Button mBtnStartGame;
 
-    //=========================
-    // NewInstance Methods
-    //=========================
+    private WeakReference<ButtonListeners> mCallback;
+
+    // =======================================
+    //           new instance Method
+    // =======================================
 
     public static StartGameFragment newInstance() { return new StartGameFragment(); }
 
-    //=========================
-    // Superclass Methods
-    //=========================
+    // =======================================
+    //           Superclass Methods
+    // =======================================
 
     @Override
     protected int getFragmentLayout() { return R.layout.fragment_start_game; }
     @Override
-    protected void configureFragment() { }
-    @Override
-    protected void updateFragment() { }
+    protected void configureFragment()
+    {
+        this.mCallback = new WeakReference<>((ButtonListeners) getActivity());
+    }
+
+    // =======================================
+    //             OnClick Methods
+    // =======================================
 
     @OnClick(R.id.frag_start_game_btn)
-    void OnCLick()
+    void OnClick()
     {
         Log.d("Start Game Fragment : ", "You are trying to go into the manor");
         // Todo display next fragment

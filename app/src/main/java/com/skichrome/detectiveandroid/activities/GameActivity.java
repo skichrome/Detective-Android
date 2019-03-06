@@ -8,12 +8,15 @@ import android.view.MenuItem;
 
 import com.skichrome.detectiveandroid.R;
 import com.skichrome.detectiveandroid.base.BaseActivity;
+import com.skichrome.detectiveandroid.base.BaseFragment;
 import com.skichrome.detectiveandroid.fragments.MapDialogFragment;
 import com.skichrome.detectiveandroid.fragments.StartGameFragment;
 
 import butterknife.BindView;
+import com.skichrome.detectiveandroid.fragments.rooms.HallFragment;
+import com.skichrome.detectiveandroid.fragments.rooms.KitchenFragment;
 
-public class GameActivity extends BaseActivity
+public class GameActivity extends BaseActivity implements BaseFragment.ButtonListeners
 {
     //=========================================
     // Fields
@@ -22,6 +25,8 @@ public class GameActivity extends BaseActivity
     @BindView(R.id.activity_toolbar) Toolbar mToolbar;
 
     private StartGameFragment mStartGameFragment;
+    private HallFragment mHallFragment;
+    private KitchenFragment mKitchenFragment;
 
     //=========================================
     // Superclass Methods
@@ -43,6 +48,14 @@ public class GameActivity extends BaseActivity
     {
         super.onStop();
         // Todo save the game before quit
+    }
+
+    @Override
+    public void onClickBtn(Fragment fragment)
+    {
+        // Todo voir comment générifier pour éviter un gros switch, ou comment avoir un système d'id pour la même raison (hashmap ?)
+        // Enumération avec une liste d'id ?
+        // Mettre les Weakreferences dans le baseFragment ?
     }
 
     //=========================================
@@ -94,6 +107,18 @@ public class GameActivity extends BaseActivity
     {
         if (mStartGameFragment == null) mStartGameFragment = StartGameFragment.newInstance();
         displayFragment(mStartGameFragment);
+    }
+
+    private void configureHallFragment()
+    {
+        if (mHallFragment == null) mHallFragment = HallFragment.newInstance();
+        displayFragment(mHallFragment);
+    }
+
+    private void configureKitchenFragment()
+    {
+        if (mKitchenFragment == null) mKitchenFragment = KitchenFragment.newInstance();
+        displayFragment(mKitchenFragment);
     }
 
     private void launchMapDialogFragment()
