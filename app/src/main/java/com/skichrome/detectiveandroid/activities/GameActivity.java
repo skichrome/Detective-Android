@@ -15,6 +15,7 @@ import com.skichrome.detectiveandroid.fragments.StartGameFragment;
 import butterknife.BindView;
 import com.skichrome.detectiveandroid.fragments.rooms.HallFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.KitchenFragment;
+import com.skichrome.detectiveandroid.models.FragmentsList;
 
 public class GameActivity extends BaseActivity implements BaseFragment.ButtonListeners
 {
@@ -38,7 +39,10 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     protected void configureActivity()
     {
         this.configureToolbar();
-        this.configureStartGameFragment();
+
+        this.displayFragment(FragmentsList.START_GAME.getFragment());
+
+        //this.configureStartGameFragment();
     }
     @Override
     protected void updateActivity() { }
@@ -56,6 +60,7 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
         // Todo voir comment générifier pour éviter un gros switch, ou comment avoir un système d'id pour la même raison (hashmap ?)
         // Enumération avec une liste d'id ?
         // Mettre les Weakreferences dans le baseFragment ?
+        this.displayFragment(fragment);
     }
 
     //=========================================

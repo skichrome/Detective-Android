@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 
+import java.lang.ref.WeakReference;
+
 public abstract class BaseFragment extends Fragment
 {
 
@@ -20,6 +22,12 @@ public abstract class BaseFragment extends Fragment
     {
         void onClickBtn(Fragment fragment);
     }
+
+    // =======================================
+    //                  Fields
+    // =======================================
+
+    protected WeakReference<ButtonListeners> mCallback;
 
     // =======================================
     //            Abstract Methods
@@ -42,6 +50,8 @@ public abstract class BaseFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(this.getFragmentLayout(), container, false);
+
+        this.mCallback = new WeakReference<>((ButtonListeners) getActivity());
 
         ButterKnife.bind(this, view);
         this.configureFragment();
