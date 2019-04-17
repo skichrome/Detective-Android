@@ -1,20 +1,13 @@
 package com.skichrome.detectiveandroid.models;
 
-import android.support.v4.app.Fragment;
-import com.skichrome.detectiveandroid.fragments.StartGameFragment;
-import com.skichrome.detectiveandroid.fragments.rooms.HallFragment;
-
 public enum FragmentsList
 {
-    START_GAME(StartGameFragment.newInstance()),
-    HALL(HallFragment.newInstance());
+    START_GAME(0),
+    HALL(1);
 
-    private Fragment mFragment;
+    private int mFragmentId;
 
-    FragmentsList(Fragment fragment)
-    {
-        this.mFragment = fragment;
-    }
+    FragmentsList(int fragmentId) { this.mFragmentId = fragmentId; }
 
-    public Fragment getFragment() { return this.mFragment; }
+    public int getId() { return this.mFragmentId; }
 }

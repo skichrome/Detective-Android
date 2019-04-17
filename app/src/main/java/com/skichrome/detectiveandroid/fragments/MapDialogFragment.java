@@ -26,8 +26,7 @@ public class MapDialogFragment extends DialogFragment
     //                 methods
     //=========================================
 
-    @Nullable
-    @Override
+    @Nullable @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_dialog, container, false);

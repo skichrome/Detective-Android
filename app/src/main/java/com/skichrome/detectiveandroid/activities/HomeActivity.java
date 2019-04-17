@@ -17,8 +17,6 @@ public class HomeActivity extends BaseActivity
     protected int getActivityLayout() { return R.layout.activity_home; }
     @Override
     protected void configureActivity() { }
-    @Override
-    protected void updateActivity() { }
 
     //=========================
     // OnCLick Methods

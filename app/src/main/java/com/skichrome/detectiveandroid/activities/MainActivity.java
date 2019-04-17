@@ -31,8 +31,6 @@ public class MainActivity extends BaseActivity
     protected int getActivityLayout() { return R.layout.activity_main; }
     @Override
     protected void configureActivity() { startAutomatically(); }
-    @Override
-    protected void updateActivity() { }
 
     @Override
     protected void onPause()

@@ -38,11 +38,11 @@ public class StartGameFragment extends BaseFragment
     // =======================================
 
     @OnClick(R.id.frag_start_game_btn)
-    void OnClick()
+    void onClickStart()
     {
         Log.d("Start Game Fragment : ", "You are trying to go into the manor");
         // Todo display next fragment
 
-        this.mCallback.get().onClickBtn(FragmentsList.HALL.getFragment());
+        this.mCallback.get().onClickBtn(FragmentsList.HALL);
     }
 }

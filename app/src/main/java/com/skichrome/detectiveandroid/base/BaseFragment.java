@@ -7,20 +7,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.skichrome.detectiveandroid.models.FragmentsList;
+
 import butterknife.ButterKnife;
 
 import java.lang.ref.WeakReference;
 
 public abstract class BaseFragment extends Fragment
 {
-
     // =======================================
     //              Interface(s)
     // =======================================
 
     public interface ButtonListeners
     {
-        void onClickBtn(Fragment fragment);
+        void onClickBtn(FragmentsList fragment);
     }
 
     // =======================================
