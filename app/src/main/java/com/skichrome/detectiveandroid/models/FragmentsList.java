@@ -1,6 +1,6 @@
 package com.skichrome.detectiveandroid.models;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import com.skichrome.detectiveandroid.fragments.StartGameFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.HallFragment;
 
