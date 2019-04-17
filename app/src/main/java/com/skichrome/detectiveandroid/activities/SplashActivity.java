@@ -2,10 +2,9 @@ package com.skichrome.detectiveandroid.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
-import com.skichrome.detectiveandroid.base.BaseActivity;
 
 public class SplashActivity extends Activity
 {

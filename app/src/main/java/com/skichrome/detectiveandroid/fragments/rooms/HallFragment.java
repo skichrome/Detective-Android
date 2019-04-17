@@ -41,7 +41,7 @@ public class HallFragment extends BaseFragment
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        builder.setTitle("Vous avez rammassé un nouvel objet !")
+        builder.setTitle("Vous avez ramassé un nouvel objet !")
                 .setMessage("Que voulez-vous en faire ?")
                 .setPositiveButton("ramasser", (dialog, which) -> showErrorLog("bouton rammasser"))
                 .setNegativeButton("jeter", (dialog, which) -> showErrorLog("bouton jeter"))

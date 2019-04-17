@@ -2,9 +2,9 @@ package com.skichrome.detectiveandroid.base;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity

@@ -1,8 +1,6 @@
 package com.skichrome.detectiveandroid.activities;
 
-import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
+import android.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -15,6 +13,8 @@ import com.skichrome.detectiveandroid.fragments.rooms.HallFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.KitchenFragment;
 import com.skichrome.detectiveandroid.models.FragmentsList;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 
 public class GameActivity extends BaseActivity implements BaseFragment.ButtonListeners
@@ -35,6 +35,7 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
 
     @Override
     protected int getActivityLayout() { return R.layout.activity_game; }
+
     @Override
     protected void configureActivity()
     {
@@ -52,10 +53,6 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     @Override
     public void onClickBtn(FragmentsList frag)
     {
-        // Todo voir comment générifier pour éviter un gros switch, ou comment avoir un système d'id pour la même raison (hashmap ?)
-        // Enumération avec une liste d'id ?
-        // Mettre les Weakreferences dans le baseFragment ?
-
         switch (frag)
         {
             case HALL : configureHallFragment();
@@ -71,7 +68,7 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     {
         setSupportActionBar(mToolbar);
         mToolbar.inflateMenu(R.menu.activity_game_menu);
-        ActionBar ab = getSupportActionBar();
+        ActionBar ab = getActionBar();
         if (ab != null)
         {
             ab.setDisplayShowTitleEnabled(false);
