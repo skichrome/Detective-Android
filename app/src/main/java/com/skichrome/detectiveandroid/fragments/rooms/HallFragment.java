@@ -31,9 +31,16 @@ public class HallFragment extends BaseFragment
     // =======================================
 
     @OnClick(R.id.hall_trombonne)
-    void onClickTrombonne()
+    void onClickTrombone()
     {
-        showErrorLog("Img clicked");
+        showErrorLog("Trombone clicked");
+        configureAlertDialog();
+    }
+
+    @OnClick(R.id.hall_case)
+    void onClickCase()
+    {
+        showErrorLog("Case clicked");
         configureAlertDialog();
     }
 
@@ -41,12 +48,20 @@ public class HallFragment extends BaseFragment
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        builder.setTitle("Vous avez ramassé un nouvel objet !")
+        builder.setTitle("Vous avez trouvé un nouvel objet !")
                 .setMessage("Que voulez-vous en faire ?")
-                .setPositiveButton("ramasser", (dialog, which) -> showErrorLog("bouton rammasser"))
+                .setPositiveButton("ramasser", (dialog, which) -> showErrorLog("bouton ramasser"))
                 .setNegativeButton("jeter", (dialog, which) -> showErrorLog("bouton jeter"))
+                .setIcon(R.drawable.ic_business_center_black_24dp)
                 .create()
                 .show();
+
+//        builder.setView(getLayoutInflater().inflate(R.layout.alert_dialog_inventaire, null))
+//                .setTitle("Objet trouvé")
+//                .setPositiveButton("rammasser", null)
+//                .setNegativeButton("jeter", null)
+//                .create()
+//                .show();
     }
 
     private static void showErrorLog(String msg)
