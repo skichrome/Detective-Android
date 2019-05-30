@@ -16,9 +16,7 @@
     <color name="colorPrimaryLight">#5e92f3</color>
 
     <color name="colorAccent">#c62828</color>
-    <color name="colorAccentDark">#8e0000</color>
-    <color name="colorAccentLight">#ff5f52</color>
 
-    <color name="primaryTextColor">#ffffff</color>
-    <color name="secondaryTextColor">#ffffff</color>
+    <color name="colorRedTransparent">#4DE40000</color>
+
 </resources>

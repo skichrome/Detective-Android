@@ -3,19 +3,19 @@ package com.skichrome.detectiveandroid.activities;
 import android.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import butterknife.BindView;
 import com.skichrome.detectiveandroid.R;
 import com.skichrome.detectiveandroid.base.BaseActivity;
 import com.skichrome.detectiveandroid.base.BaseFragment;
 import com.skichrome.detectiveandroid.fragments.MapDialogFragment;
 import com.skichrome.detectiveandroid.fragments.StartGameFragment;
+import com.skichrome.detectiveandroid.fragments.rooms.GardenFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.HallFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.KitchenFragment;
+import com.skichrome.detectiveandroid.fragments.rooms.LivingFragment;
 import com.skichrome.detectiveandroid.models.FragmentsList;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import butterknife.BindView;
 
 public class GameActivity extends BaseActivity implements BaseFragment.ButtonListeners
 {
@@ -28,13 +28,18 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     private StartGameFragment mStartGameFragment;
     private HallFragment mHallFragment;
     private KitchenFragment mKitchenFragment;
+    private LivingFragment mLivingFragment;
+    private GardenFragment mGardenFragment;
 
     //=========================================
     // Superclass Methods
     //=========================================
 
     @Override
-    protected int getActivityLayout() { return R.layout.activity_game; }
+    protected int getActivityLayout()
+    {
+        return R.layout.activity_game;
+    }
 
     @Override
     protected void configureActivity()
@@ -55,8 +60,20 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     {
         switch (frag)
         {
-            case HALL : configureHallFragment();
+            case HALL:
+                configureHallFragment();
                 break;
+            case GARDEN:
+                configureGardenFragment();
+                break;
+            case LIVING:
+                configureLivingFragment();
+                break;
+            case KITCHEN:
+                configureKitchenFragment();
+                break;
+            default:
+                configureHallFragment();
         }
     }
 
@@ -88,11 +105,13 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     {
         switch (item.getItemId())
         {
-            case R.id.activity_game_menu_pause : return true;
-            case R.id.activity_game_menu_map_access :
+            case R.id.activity_game_menu_pause:
+                return true;
+            case R.id.activity_game_menu_map_access:
                 this.launchMapDialogFragment();
                 return true;
-            default : return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
@@ -102,7 +121,8 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
 
     private void displayFragment(Fragment mFragment)
     {
-        if (!mFragment.isVisible()) getSupportFragmentManager().beginTransaction().replace(R.id.activity_game_fragment_container, mFragment).commit();
+        if (!mFragment.isVisible())
+            getSupportFragmentManager().beginTransaction().replace(R.id.activity_game_fragment_container, mFragment).commit();
     }
 
     private void configureStartGameFragment()
@@ -121,6 +141,18 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     {
         if (mKitchenFragment == null) mKitchenFragment = KitchenFragment.newInstance();
         displayFragment(mKitchenFragment);
+    }
+
+    private void configureGardenFragment()
+    {
+        if (mGardenFragment == null) mGardenFragment = GardenFragment.newInstance();
+        displayFragment(mGardenFragment);
+    }
+
+    private void configureLivingFragment()
+    {
+        if (mLivingFragment == null) mLivingFragment = LivingFragment.newInstance();
+        displayFragment(mLivingFragment);
     }
 
     private void launchMapDialogFragment()

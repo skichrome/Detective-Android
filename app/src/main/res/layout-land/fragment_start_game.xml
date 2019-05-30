@@ -7,7 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/bg_frag_start_game"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/content_desc_frag_start_game_background_img"
@@ -21,7 +20,6 @@
         app:srcCompat="@drawable/main" />
 
     <TextView
-        android:id="@+id/frag_start_game_textview_presentation"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -41,6 +39,7 @@
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
         android:text="Démarrer le jeu"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
