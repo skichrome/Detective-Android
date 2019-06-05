@@ -11,9 +11,13 @@ import com.skichrome.detectiveandroid.base.BaseActivity;
 import com.skichrome.detectiveandroid.base.BaseFragment;
 import com.skichrome.detectiveandroid.fragments.MapDialogFragment;
 import com.skichrome.detectiveandroid.fragments.StartGameFragment;
+import com.skichrome.detectiveandroid.fragments.rooms.BathroomFragment;
+import com.skichrome.detectiveandroid.fragments.rooms.BedroomFragment;
+import com.skichrome.detectiveandroid.fragments.rooms.DesktopFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.GardenFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.HallFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.KitchenFragment;
+import com.skichrome.detectiveandroid.fragments.rooms.LibraryFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.LivingFragment;
 import com.skichrome.detectiveandroid.models.FragmentsList;
 
@@ -30,6 +34,10 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     private KitchenFragment mKitchenFragment;
     private LivingFragment mLivingFragment;
     private GardenFragment mGardenFragment;
+    private BathroomFragment mBathroomFragment;
+    private DesktopFragment mDesktopFragment;
+    private LibraryFragment mLibraryFragment;
+    private BedroomFragment mBedroomFragment;
 
     //=========================================
     // Superclass Methods
@@ -71,6 +79,18 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
                 break;
             case KITCHEN:
                 configureKitchenFragment();
+                break;
+            case BATHROOM:
+                configureBathRoomFragment();
+                break;
+            case DESKTOP:
+                configureDesktopFragment();
+                break;
+            case LIBRARY:
+                configureLibraryFragment();
+                break;
+            case BEDROOM:
+                configureBedRoomFragment();
                 break;
             default:
                 configureHallFragment();
@@ -153,6 +173,30 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     {
         if (mLivingFragment == null) mLivingFragment = LivingFragment.newInstance();
         displayFragment(mLivingFragment);
+    }
+
+    private void configureBathRoomFragment()
+    {
+        if (mBathroomFragment == null) mBathroomFragment = BathroomFragment.newInstance();
+        displayFragment(mBathroomFragment);
+    }
+
+    private void configureDesktopFragment()
+    {
+        if (mDesktopFragment == null) mDesktopFragment = DesktopFragment.newInstance();
+        displayFragment(mDesktopFragment);
+    }
+
+    private void configureLibraryFragment()
+    {
+        if (mLibraryFragment == null) mLibraryFragment = LibraryFragment.newInstance();
+        displayFragment(mLibraryFragment);
+    }
+
+    private void configureBedRoomFragment()
+    {
+        if (mBedroomFragment == null) mBedroomFragment = BedroomFragment.newInstance();
+        displayFragment(mBedroomFragment);
     }
 
     private void launchMapDialogFragment()

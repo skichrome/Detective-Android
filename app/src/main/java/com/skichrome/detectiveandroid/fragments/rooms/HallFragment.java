@@ -2,6 +2,8 @@ package com.skichrome.detectiveandroid.fragments.rooms;
 
 import android.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
+
 import butterknife.OnClick;
 import com.skichrome.detectiveandroid.R;
 import com.skichrome.detectiveandroid.base.BaseFragment;
@@ -38,36 +40,37 @@ public class HallFragment extends BaseFragment
     //             OnClick Methods
     // =======================================
 
-    @OnClick(R.id.btn_cuisine)
-    void goToKitchen()
+    @OnClick({R.id.btnGoToKitchenFromHall, R.id.btnGoToGardenFromHall, R.id.btnGoToLivingFromHall})
+    void onClickBtn(View view)
     {
-        mCallback.get().onClickBtn(FragmentsList.KITCHEN);
+        switch (view.getId())
+        {
+            case R.id.btnGoToKitchenFromHall:
+                mCallback.get().onClickBtn(FragmentsList.KITCHEN);
+                break;
+            case R.id.btnGoToGardenFromHall:
+                mCallback.get().onClickBtn(FragmentsList.GARDEN);
+                break;
+            case R.id.btnGoToLivingFromHall:
+                mCallback.get().onClickBtn(FragmentsList.LIVING);
+                break;
+        }
     }
 
-    @OnClick(R.id.btn_jardin)
-    void goToGarden()
+    @OnClick({R.id.hall_trombonne, R.id.hall_case})
+    void onClickItem(View view)
     {
-        mCallback.get().onClickBtn(FragmentsList.GARDEN);
-    }
-
-    @OnClick(R.id.btn_salon)
-    void goToLiving()
-    {
-        mCallback.get().onClickBtn(FragmentsList.LIVING);
-    }
-
-    @OnClick(R.id.hall_trombonne)
-    void onClickTrombone()
-    {
-        showErrorLog("Trombone clicked");
-        createAndShowAlertDialog(mTrombonne);
-    }
-
-    @OnClick(R.id.hall_case)
-    void onClickCase()
-    {
-        showErrorLog("Case clicked");
-        createAndShowAlertDialog(mValise);
+        switch (view.getId())
+        {
+            case R.id.hall_trombonne:
+                showErrorLog("Trombone clicked");
+                createAndShowAlertDialog(mTrombonne);
+                break;
+            case R.id.hall_case:
+                showErrorLog("Case clicked");
+                createAndShowAlertDialog(mValise);
+                break;
+        }
     }
 
     // =======================================
