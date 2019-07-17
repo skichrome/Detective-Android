@@ -48,4 +48,9 @@ public class KitchenFragment extends BaseFragment
                 break;
         }
     }
+
+    @OnClick(R.id.kitchen_frag_knife_img)
+    void onClickKnife()
+    {
+    }
 }

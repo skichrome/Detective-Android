@@ -41,4 +41,9 @@ public class LivingFragment extends BaseFragment
                 break;
         }
     }
+
+    @OnClick(R.id.living_frag_key_to_library)
+    void onClickKey()
+    {
+    }
 }

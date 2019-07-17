@@ -58,4 +58,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnGoToHallFromKitchen" />
+
+    <ImageView
+        android:id="@+id/kitchen_frag_knife_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:tint="#F44336"
+        app:layout_constraintBottom_toTopOf="@+id/btnGoToLibraryFromKitchen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.371"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.719"
+        app:srcCompat="@drawable/ic_knife" />
 </androidx.constraintlayout.widget.ConstraintLayout>

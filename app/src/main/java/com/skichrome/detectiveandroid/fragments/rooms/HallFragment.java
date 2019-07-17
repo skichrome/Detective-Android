@@ -7,19 +7,13 @@ import android.view.View;
 import butterknife.OnClick;
 import com.skichrome.detectiveandroid.R;
 import com.skichrome.detectiveandroid.base.BaseFragment;
+import com.skichrome.detectiveandroid.inventorymanagement.ObjectsAvailable;
 import com.skichrome.detectiveandroid.models.FragmentsList;
-import com.skichrome.detectiveandroid.models.ObjectOnFloor;
+
 import org.jetbrains.annotations.NotNull;
 
 public class HallFragment extends BaseFragment
 {
-    // =======================================
-    //                  Fields
-    // =======================================
-
-    private ObjectOnFloor mTrombonne = new ObjectOnFloor(0, "un trombonne", "Ce trombonne est abïmé, pourquoi ?", R.drawable.ic_trombonne);
-    private ObjectOnFloor mValise = new ObjectOnFloor(1, "une valise", "tiens un papier retient votre attention, il parle d'une importante somme d'argent cachée dans la maison", R.drawable.ic_business_center_black_24dp);
-
     // =======================================
     //           new instance Method
     // =======================================
@@ -64,11 +58,11 @@ public class HallFragment extends BaseFragment
         {
             case R.id.hall_trombonne:
                 showErrorLog("Trombone clicked");
-                createAndShowAlertDialog(mTrombonne);
+                createAndShowAlertDialog(ObjectsAvailable.TROMBONE);
                 break;
             case R.id.hall_case:
                 showErrorLog("Case clicked");
-                createAndShowAlertDialog(mValise);
+                createAndShowAlertDialog(ObjectsAvailable.CASE);
                 break;
         }
     }
@@ -77,7 +71,7 @@ public class HallFragment extends BaseFragment
     //                 Methods
     // =======================================
 
-    private void createAndShowAlertDialog(@NotNull ObjectOnFloor foundObject)
+    private void createAndShowAlertDialog(@NotNull ObjectsAvailable foundObject)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
