@@ -3,9 +3,10 @@ package com.skichrome.detectiveandroid.activities;
 import android.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import butterknife.BindView;
+
 import com.skichrome.detectiveandroid.R;
 import com.skichrome.detectiveandroid.base.BaseActivity;
 import com.skichrome.detectiveandroid.base.BaseFragment;
@@ -20,6 +21,8 @@ import com.skichrome.detectiveandroid.fragments.rooms.KitchenFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.LibraryFragment;
 import com.skichrome.detectiveandroid.fragments.rooms.LivingFragment;
 import com.skichrome.detectiveandroid.models.FragmentsList;
+
+import butterknife.BindView;
 
 public class GameActivity extends BaseActivity implements BaseFragment.ButtonListeners
 {
@@ -68,9 +71,6 @@ public class GameActivity extends BaseActivity implements BaseFragment.ButtonLis
     {
         switch (frag)
         {
-            case HALL:
-                configureHallFragment();
-                break;
             case GARDEN:
                 configureGardenFragment();
                 break;
